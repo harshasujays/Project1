@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sakura Grand Hotel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#111;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* Falling Sakura Animation */
+.sakura{
+    position:fixed;
+    top:-10px;
+    background:pink;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    opacity:0.7;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh);
+    }
+}
+
+/* HERO */
+header{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1505060892900-0d6b6f8f4a7b');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+header h1{
+    font-family:'Cinzel',serif;
+    font-size:95px;
+    letter-spacing:6px;
+    margin-bottom:20px;
+}
+
+header p{
+    font-size:24px;
+    margin-bottom:20px;
+}
+
+.stars{
+    color:gold;
+    font-size:26px;
+}
+
+.price{
+    font-size:22px;
+    margin-top:10px;
+    color:#ffcccc;
+}
+
+/* Sections */
+section{
+    padding:80px 10%;
+    animation:fadeUp 1.2s ease;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+h2{
+    text-align:center;
+    font-size:45px;
+    margin-bottom:50px;
+    font-family:'Cinzel',serif;
+    color:#ff4d6d;
+}
+
+/* Gallery */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.gallery img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    border-radius:15px;
+    transition:0.4s;
+}
+
+.gallery img:hover{
+    transform:scale(1.07);
+}
+
+/* Rooms */
+.rooms{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.room-card{
+    background:#1c1c1c;
+    border-radius:20px;
+    overflow:hidden;
+    transition:0.4s;
+    box-shadow:0 8px 30px rgba(0,0,0,0.6);
+}
+
+.room-card:hover{
+    transform:translateY(-12px);
+}
+
+.room-card img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+}
+
+.room-card div{
+    padding:25px;
+}
+
+/* Features */
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+    text-align:center;
+}
+
+.feature-box{
+    background:#1c1c1c;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.5);
+}
+
+.feature-box img{
+    width:80px;
+    margin-bottom:20px;
+}
+
+/* Menu */
+.menu{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.menu-card{
+    background:#1c1c1c;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.menu-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.menu-card div{
+    padding:20px;
+}
+
+/* Booking */
+.booking{
+    max-width:550px;
+    margin:0 auto;
+    padding:50px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    box-shadow:0 10px 40px rgba(0,0,0,0.6);
+    text-align:center;
+}
+
+.booking input{
+    width:100%;
+    padding:14px;
+    margin:12px 0;
+    border-radius:10px;
+    border:none;
+}
+.booking select{
+width:100%;
+padding:18px 20px;
+margin:14px 0;
+border-radius:14px;
+border:none;
+font-size:17px;
+background:rgba(255,255,255,0.95);
+color:#000;
+cursor:pointer;
+}
+.booking input:focus{
+    outline:none;
+    box-shadow:0 0 12px #ff4d6d;
+}
+
+.booking button{
+    margin-top:15px;
+    padding:15px 30px;
+    background:#ff4d6d;
+    border:none;
+    color:white;
+    font-size:20px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.booking button:hover{
+    background:#ff1e4d;
+    transform:scale(1.05);
+}
+
+footer{
+    text-align:center;
+    padding:25px;
+    background:#000;
+    margin-top:50px;
+}
+
+/* Responsive Hero */
+@media(max-width:768px){
+    header h1{
+        font-size:50px;
+    }
+    header p{
+        font-size:18px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Sakura Grand Hotel</h1>
+    <p>Luxurious Stay Near Shinjuku Station</p>
+    <div class="stars">★★★★★</div>
+    <div class="price">₹9,800 per night</div>
+</header>
+
+<section>
+<h2>Hotel Gallery</h2>
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1566073771259-6a8506099945" alt="Hotel Interior 1">
+<img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb" alt="Hotel Interior 2">
+<img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa" alt="Hotel Interior 3">
+<img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b" alt="Hotel Interior 4">
+</div>
+</section>
+
+<section>
+<h2>Luxury Rooms</h2>
+<div class="rooms">
+<div class="room-card">
+<img src="https://images.unsplash.com/photo-1590490360182-c33d57733427" alt="City Skyline Suite">
+<div>
+<h3>City Skyline Suite</h3>
+<p>Premium suite with breathtaking Tokyo skyline view.</p>
+</div>
+</div>
+
+<div class="room-card">
+<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85" alt="Traditional Tatami Room">
+<div>
+<h3>Traditional Tatami Room</h3>
+<p>Authentic Japanese room with futon bedding and tatami flooring.</p>
+</div>
+</div>
+
+<div class="room-card">
+<img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2" alt="Imperial King Room">
+<div>
+<h3>Imperial King Room</h3>
+<p>Modern elegance blended with cultural aesthetics.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Premium Features</h2>
+<div class="features">
+<div class="feature-box">
+<img src="https://cdn-icons-png.flaticon.com/512/854/854878.png" alt="Onsen Spa">
+<h4>Onsen Spa</h4>
+</div>
+
+<div class="feature-box">
+<img src="https://cdn-icons-png.flaticon.com/512/2921/2921822.png" alt="24/7 Concierge">
+<h4>24/7 Concierge</h4>
+</div>
+
+<div class="feature-box">
+<img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png" alt="Rooftop Lounge">
+<h4>Rooftop Lounge</h4>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Japanese Cuisine</h2>
+<div class="menu">
+<div class="menu-card">
+<img src="https://images.unsplash.com/photo-1562967916-eb82221dfb92" alt="Sushi Platter">
+<div><h4>Sushi Platter</h4></div>
+</div>
+
+<div class="menu-card">
+<img src="hotel 4.1.webp" alt="Ramen Bowl">
+<div><h4>Ramen Bowl</h4></div>
+</div>
+
+<div class="menu-card">
+<img src="https://images.unsplash.com/photo-1585032226651-759b368d7246" alt="Matcha Dessert">
+<div><h4>Matcha Delight</h4></div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Reserve Your Stay</h2>
+<div class="booking">
+    <section>
+<h2>Reserve Your Stay</h2>
+
+<div class="booking">
+
+<input type="date" id="checkin" required>
+<input type="date" id="checkout" required>
+
+<select id="guests">
+<option value="">Guests</option>
+<option>1 Guest</option>
+<option>2 Guests</option>
+<option>3 Guests</option>
+<option>4 Guests</option>
+</select>
+
+<select id="roomType">
+<option value="9800">City Skyline Suite - ₹9,800/night</option>
+<option value="12000">Traditional Tatami Room - ₹12,000/night</option>
+<option value="15000">Imperial King Room - ₹15,000/night</option>
+</select>
+
+<button onclick="prepareBooking()">Proceed to Payment</button>
+
+</div>
+</section>
+ <section id="paymentSection" style="display:none;">
+<h2>Secure Payment</h2>
+
+<div class="booking">
+
+<p><strong>City:</strong> <span id="city"></span></p>
+<p><strong>Check-in:</strong> <span id="checkinPay"></span></p>
+<p><strong>Check-out:</strong> <span id="checkoutPay"></span></p>
+<p><strong>Guests:</strong> <span id="guestsPay"></span></p>
+<p><strong>Total Amount:</strong> ₹<span id="totalAmount"></span></p>
+
+<input id="cardName" type="text" placeholder="Cardholder Name">
+<input id="cardNumber" type="text" placeholder="Card Number">
+
+<div style="display:flex;gap:10px;">
+<input id="expiry" type="text" placeholder="MM/YY">
+<input id="cvv" type="text" placeholder="CVV">
+</div>
+
+<button onclick="processPayment()">Pay Securely</button>
+
+</div>
+</section>
+<section id="successSection" style="display:none;">
+<h2>Booking Status</h2>
+
+<div class="booking" style="text-align:center">
+
+<h3 style="color:#ff4d6d;font-size:28px;margin-bottom:10px;">
+✔ Booking Confirmed
+</h3>
+
+<p style="margin-bottom:25px;">
+Your stay at Sakura Grand Hotel has been successfully reserved.
+</p>
+
+<a href="hotel_ticket.html"
+style="
+display:inline-block;
+padding:12px 30px;
+background:#ff4d6d;
+color:white;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;">
+View Booking Ticket
+</a>
+
+</div>
+</section>   
+
+<script>
+function prepareBooking(){
+
+const checkin = document.getElementById("checkin").value;
+const checkout = document.getElementById("checkout").value;
+const guests = document.getElementById("guests").value;
+
+const roomSelect = document.getElementById("roomType");
+const pricePerNight = parseInt(roomSelect.value);
+const roomName = roomSelect.options[roomSelect.selectedIndex].text;
+
+if(!checkin || !checkout){
+alert("Please select check-in and check-out dates.");
+return;
+}
+
+const checkinDate = new Date(checkin);
+const checkoutDate = new Date(checkout);
+
+if(checkoutDate <= checkinDate){
+alert("Check-out must be after check-in.");
+return;
+}
+
+const nights = Math.ceil((checkoutDate - checkinDate)/(1000*60*60*24));
+
+const subtotal = nights * pricePerNight;
+const tax = subtotal * 0.12;
+const total = subtotal + tax;
+
+localStorage.setItem("hotelBookingData", JSON.stringify({
+
+city:"Tokyo",
+hotelName:"Sakura Grand Hotel",
+
+roomName,
+pricePerNight,
+nights,
+subtotal,
+tax,
+total,
+
+checkin,
+checkout,
+guests,
+
+theme:{
+useCustomTheme:true,
+bgGradient:"linear-gradient(135deg,#000000,#1e1e1e)",
+primary:"#ff4d6d",
+secondary:"#ff7b9c",
+cardBg:"rgba(255,255,255,0.08)",
+textColor:"#ffffff"
+}
+
+}));
+
+document.getElementById("city").textContent="Tokyo";
+document.getElementById("checkinPay").textContent=checkin;
+document.getElementById("checkoutPay").textContent=checkout;
+document.getElementById("guestsPay").textContent=guests;
+document.getElementById("totalAmount").textContent=total.toLocaleString();
+
+document.getElementById("paymentSection").style.display="block";
+
+document.getElementById("paymentSection").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+function processPayment(){
+
+const name=document.getElementById("cardName").value.trim();
+const number=document.getElementById("cardNumber").value.trim();
+const expiry=document.getElementById("expiry").value.trim();
+const cvv=document.getElementById("cvv").value.trim();
+
+if(!name||!number||!expiry||!cvv){
+alert("Please fill all payment details.");
+return;
+}
+
+if(number.length<12){
+alert("Invalid card number");
+return;
+}
+
+if(cvv.length!==3){
+alert("Invalid CVV");
+return;
+}
+
+document.getElementById("paymentSection").style.display="none";
+document.getElementById("successSection").style.display="block";
+
+}
+const today = new Date().toISOString().split("T")[0];
+
+document.getElementById("checkin").setAttribute("min", today);
+document.getElementById("checkout").setAttribute("min", today);
+
+document.getElementById("checkin").addEventListener("change", function(){
+
+const checkinDate = new Date(this.value);
+checkinDate.setDate(checkinDate.getDate() + 1);
+
+const minCheckout = checkinDate.toISOString().split("T")[0];
+
+document.getElementById("checkout").setAttribute("min", minCheckout);
+
+});
+function goToPayment() {
+
+  const checkin = document.querySelectorAll("input[type='date']")[0].value;
+  const checkout = document.querySelectorAll("input[type='date']")[1].value;
+  const guests = document.querySelector("select").value;
+
+  if (!checkin || !checkout || !guests) {
+    alert("Please fill all booking details before continuing.");
+    return;
+  }
+
+  const checkinDate = new Date(checkin);
+  const checkoutDate = new Date(checkout);
+
+  if (checkoutDate <= checkinDate) {
+    alert("Check-out date must be after the check-in date.");
+    return;
+  }
+
+  /* 🔹 CHANGE ONLY THESE VALUES PER HOTEL 🔹 */
+  localStorage.setItem("hotelBookingData", JSON.stringify({
+    city: "Paris",              // change
+    hotelName: "Hotel Lumière", // change
+    pricePerNight: 8000,        // change
+    checkin,
+    checkout,
+    guests
+  }));
+
+  window.location.href = "payment.html";
+}
+const expiry = document.getElementById("expiry");
+
+expiry.addEventListener("input", function(e){
+
+let value = e.target.value.replace(/\D/g,"").substring(0,4);
+
+if(value.length >= 3){
+value = value.substring(0,2) + "/" + value.substring(2);
+}
+
+e.target.value = value;
+
+});
+
+</script>
+
+
+<footer>
+© 2026 Sakura Grand Hotel | Tokyo, Japan
+</footer>
+
+</body>
+</html>

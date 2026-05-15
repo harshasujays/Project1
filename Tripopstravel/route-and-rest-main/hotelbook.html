@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StayOps</title>
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    
+      <div class="bg-image"></div>
+
+  <!-- Content layer -->
+  <div class="page-content">
+
+    <button class="back-btn" onclick="window.location.href='booking-page.html'">
+← Back
+</button>
+    <div class="group">
+      <div class="title-main">StayOps</div>
+      <br>
+      <div class="title-sub">by TripOps</div>
+    </div>
+    <br>
+    <p class="tagline">Find the best hotels at the best prices</p>
+    
+    <div class="search-section">
+    <h2>Search Hotels</h2>
+
+    <form class="search-form">
+
+  <div class="form-group">
+    <label>Destination City</label>
+    <select id="destinationCity" required>
+      <option value="">Select city</option>
+      <option value="paris">Paris</option>
+      <option value="tokyo">Tokyo</option>
+      <option value="dubai">Dubai</option>
+      <option value="goa">Goa</option>
+      <option value="switzerland">Switzerland</option>
+      <option value="italy">Italy</option>
+      <option value="kerala">Kerala</option>
+      <option value="bali">Bali</option>
+    </select>
+  </div>
+
+  <button type="submit" class="search-btn">Search Hotels</button>
+
+</form>
+
+    <!-- Hotel Results -->
+<div id="hotelResults" class="hotel-results" style="display:none;">
+  <br>
+  <h2>Available Hotels</h2>
+  <div id="hotelList"></div>
+</div>
+
+</div>
+ <!-- ================= BEST TIME TO BOOK ================= -->
+<div class="best-time">
+
+  <h2 class="section-title">
+    Discover the best time to book your next stay
+  </h2>
+
+  <div class="best-time-card">
+
+   
+
+    <div class="best-time-content">
+
+      <!-- Left Image -->
+      <div class="city-image">
+  <img id="cityImage" src="paris.jpg" alt="City Image">
+</div>
+
+
+      <div class="price-list" id="priceList"></div>
+<button class="read-more" id="readMoreBtn">Read more</button>
+
+        <div class="city-tabs" id="cityTabs">
+  <span class="active" data-city="paris">Paris</span>
+  <span data-city="mumbai">Mumbai</span>
+  <span data-city="tokyo">Tokyo</span>
+  <span data-city="dubai">Dubai</span>
+  <span data-city="delhi">Delhi</span>
+  <span data-city="switzerland">Switzerland</span>
+  <span data-city="italy">Italy</span>
+  <span data-city="goa">Goa</span>
+  <span data-city="kerala">Kerala</span>
+  <span data-city="bali">Bali</span>
+</div>
+
+
+  <!-- Months will be injected by JS -->
+</div>
+
+
+    <p class="price-note">
+      Prices are based on the average price range for 3-star hotels per night.
+    </p>
+
+  </div>
+</div>
+
+
+    
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div><h4>TripOps</h4><p>Your ultimate travel partner.</p></div>
+        <div><h4>Company</h4><p>About Us<br>Careers</p></div>
+        <div><h4>Support</h4><p>Help Center<br>Contact</p></div>
+        <div><h4>Follow Us</h4><p>Instagram<br>Twitter</p></div>
+      </div>
+    </footer>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const cityData = {
+    paris: {
+  image: "paris.jpg",
+  prices: [
+    ["January", "₹6,000 – ₹11,500"],
+    ["February", "₹6,200 – ₹12,000"],
+    ["March", "₹7,000 – ₹13,500"],
+    ["April", "₹8,500 – ₹16,000"],
+    ["May", "₹9,500 – ₹18,500"],
+    ["June", "₹10,000 – ₹20,000"],
+    ["July", "₹10,500 – ₹21,500"],
+    ["August", "₹9,800 – ₹19,500"],
+    ["September", "₹9,000 – ₹18,000"],
+    ["October", "₹8,200 – ₹16,500"],
+    ["November", "₹7,000 – ₹14,500"],
+    ["December", "₹8,500 – ₹17,500"]
+  ]
+},
+
+
+    mumbai: {
+      image: "mumbai.jpg",
+      prices: [
+        ["January", "₹2,400 – ₹12,000"],
+        ["February", "₹2,300 – ₹11,800"],
+        ["March", "₹2,350 – ₹12,200"],
+        ["April", "₹2,500 – ₹13,000"],
+        ["May", "₹2,600 – ₹14,000"],
+        ["June", "₹2,300 – ₹13,500"],
+        ["July", "₹2,200 – ₹14,200"],
+        ["August", "₹2,100 – ₹13,900"],
+        ["September", "₹2,250 – ₹14,100"],
+        ["October", "₹2,500 – ₹15,000"],
+        ["November", "₹2,800 – ₹16,500"],
+        ["December", "₹3,200 – ₹18,000"]
+      ]
+    },
+    tokyo: {
+      image: "tokyo.jpeg",
+      prices: [
+        ["January", "₹5,500 – ₹10,500"],
+    ["February", "₹5,200 – ₹10,000"],
+    ["March", "₹6,500 – ₹13,000"],
+    ["April", "₹8,000 – ₹16,500"],
+    ["May", "₹7,500 – ₹15,000"],
+    ["June", "₹6,000 – ₹12,500"],
+    ["July", "₹6,200 – ₹13,500"],
+    ["August", "₹7,000 – ₹14,500"],
+    ["September", "₹6,800 – ₹13,800"],
+    ["October", "₹7,500 – ₹15,500"],
+    ["November", "₹7,000 – ₹14,500"],
+    ["December", "₹8,500 – ₹17,000"]
+      ]
+    },
+    dubai: {
+      image: "dubai.jpg",
+      prices: [
+         ["January", "₹7,500 – ₹15,500"],
+    ["February", "₹8,000 – ₹17,000"],
+    ["March", "₹7,000 – ₹14,500"],
+    ["April", "₹6,500 – ₹13,000"],
+    ["May", "₹5,500 – ₹11,500"],
+    ["June", "₹4,500 – ₹9,500"],
+    ["July", "₹4,000 – ₹8,500"],
+    ["August", "₹4,200 – ₹9,000"],
+    ["September", "₹4,800 – ₹10,000"],
+    ["October", "₹6,500 – ₹13,500"],
+    ["November", "₹8,500 – ₹18,500"],
+    ["December", "₹9,500 – ₹20,000"]
+      ]
+    },
+    delhi: {
+      image: "delhi.jpg",
+      prices: [
+        ["January", "₹1,800 – ₹9,145"],
+        ["February", "₹1,790 – ₹9,575"],
+        ["March", "₹1,835 – ₹9,715"],
+        ["April", "₹1,895 – ₹10,995"],
+        ["May", "₹1,970 – ₹11,555"],
+        ["June", "₹1,920 – ₹11,850"],
+        ["July", "₹1,900 – ₹13,040"],
+        ["August", "₹1,850 – ₹12,500"],
+        ["September", "₹1,780 – ₹11,900"],
+        ["October", "₹1,920 – ₹12,300"],
+        ["November", "₹2,100 – ₹13,500"],
+        ["December", "₹2,500 – ₹15,000"]
+      ]
+    },
+    switzerland: {
+      image: "switzerland.jpg",
+      prices: [
+        ["January", "₹9,000 – ₹20,000"],
+    ["February", "₹9,500 – ₹22,000"],
+    ["March", "₹8,500 – ₹18,500"],
+    ["April", "₹7,500 – ₹16,000"],
+    ["May", "₹8,500 – ₹18,500"],
+    ["June", "₹10,000 – ₹22,500"],
+    ["July", "₹12,000 – ₹26,000"],
+    ["August", "₹12,500 – ₹27,000"],
+    ["September", "₹10,500 – ₹22,500"],
+    ["October", "₹9,000 – ₹19,500"],
+    ["November", "₹8,000 – ₹17,000"],
+    ["December", "₹10,500 – ₹24,000"]
+      ]
+    },
+    italy: {
+      image: "italy.jpg",
+      prices: [
+         ["January", "₹6,000 – ₹12,000"],
+    ["February", "₹6,200 – ₹12,500"],
+    ["March", "₹7,000 – ₹14,000"],
+    ["April", "₹8,500 – ₹17,000"],
+    ["May", "₹9,500 – ₹19,500"],
+    ["June", "₹10,500 – ₹21,500"],
+    ["July", "₹11,000 – ₹23,000"],
+    ["August", "₹10,800 – ₹22,000"],
+    ["September", "₹9,500 – ₹19,500"],
+    ["October", "₹8,500 – ₹17,500"],
+    ["November", "₹7,000 – ₹15,000"],
+    ["December", "₹8,500 – ₹18,500"]
+      ]
+    },
+    goa: {
+      image: "goa.jpg",
+      prices: [
+        ["January", "₹8,500 – ₹17,500"],
+    ["February", "₹8,000 – ₹16,500"],
+    ["March", "₹9,000 – ₹18,500"],
+    ["April", "₹10,500 – ₹22,000"],
+    ["May", "₹12,000 – ₹25,000"],
+    ["June", "₹13,000 – ₹27,000"],
+    ["July", "₹14,000 – ₹29,000"],
+    ["August", "₹13,500 – ₹28,000"],
+    ["September", "₹12,500 – ₹26,000"],
+    ["October", "₹11,000 – ₹23,000"],
+    ["November", "₹10,000 – ₹21,000"],
+    ["December", "₹12,500 – ₹26,500"]
+      ]
+    },
+    kerala: {
+      image: "kerala.jpg",
+      prices: [
+        ["January", "₹3,500 – ₹8,500"],
+    ["February", "₹3,800 – ₹9,000"],
+    ["March", "₹3,200 – ₹7,500"],
+    ["April", "₹2,800 – ₹6,500"],
+    ["May", "₹2,500 – ₹6,000"],
+    ["June", "₹2,200 – ₹5,500"],
+    ["July", "₹2,000 – ₹5,200"],
+    ["August", "₹2,100 – ₹5,400"],
+    ["September", "₹2,300 – ₹5,800"],
+    ["October", "₹3,000 – ₹7,000"],
+    ["November", "₹3,800 – ₹8,800"],
+    ["December", "₹4,500 – ₹10,500"]
+      ]
+    },
+    bali: {
+      image: "bali.jpg",
+      prices: [
+        ["January", "₹3,000 – ₹7,000"],
+    ["February", "₹2,800 – ₹6,800"],
+    ["March", "₹2,900 – ₹7,200"],
+    ["April", "₹3,200 – ₹8,000"],
+    ["May", "₹3,500 – ₹9,000"],
+    ["June", "₹3,800 – ₹10,000"],
+    ["July", "₹4,200 – ₹11,500"],
+    ["August", "₹4,500 – ₹12,000"],
+    ["September", "₹3,800 – ₹10,500"],
+    ["October", "₹3,500 – ₹9,200"],
+    ["November", "₹3,200 – ₹8,500"],
+    ["December", "₹4,000 – ₹11,000"]
+      ]
+    },
+  };
+
+  let currentCity = "paris";
+  let expanded = false;
+
+  const priceList = document.getElementById("priceList");
+  const readMoreBtn = document.getElementById("readMoreBtn");
+  const cityImage = document.getElementById("cityImage");
+  const tabs = document.querySelectorAll("#cityTabs span");
+
+  function renderPrices() {
+    if (!cityData[currentCity]) return;
+
+    priceList.innerHTML = "";
+
+    const prices = expanded
+      ? cityData[currentCity].prices
+      : cityData[currentCity].prices.slice(0, 6);
+
+    prices.forEach((item, index) => {
+      const row = document.createElement("div");
+      row.className = "price-row" + (index === 0 ? " highlight" : "");
+      row.innerHTML = `<span>${item[0]}</span><span>${item[1]} ›</span>`;
+      priceList.appendChild(row);
+    });
+
+    cityImage.src = cityData[currentCity].image;
+    readMoreBtn.textContent = expanded ? "Show less" : "Read more";
+  }
+
+  // Initial render
+  renderPrices();
+
+  // Read more toggle
+  readMoreBtn.addEventListener("click", () => {
+    expanded = !expanded;
+    renderPrices();
+  });
+
+  // City switching
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      currentCity = tab.dataset.city;
+      expanded = false;
+
+      renderPrices();
+    });
+  });
+  const hotelDatabase = {
+  paris: [
+    {
+      name: "Hotel Lumière Paris",
+      image: "paris1.jpeg",
+      description: "Elegant stay near the Eiffel Tower with free breakfast.",
+      price: "₹12,000 / night",
+      rating: 5,
+      link: "hotel1.html"
+    },
+    {
+      name: "Eiffel Stay Inn",
+      image: "paris2.jpg",
+      description: "Cozy boutique hotel with city view rooms.",
+      price: "₹10,500 / night",
+      rating: 4,
+      link: "hotel2.html"
+    },
+    {
+      name: "Seine Comfort Hotel",
+      image: "paris3.jpg",
+      description: "Modern rooms beside the Seine River.",
+      price: "₹11,200 / night",
+      rating: 4,
+      link: "hotel3.html"
+    }
+  ],
+
+  tokyo: [
+    {
+      name: "Sakura Grand Hotel",
+      image: "tokyo1.jpg",
+      description: "Luxury stay near Shinjuku station.",
+      price: "₹9,800 / night",
+      rating: 5,
+      link: "hotel4.html"
+    },
+    {
+      name: "Shibuya City Stay",
+      image: "tokyo2.jpeg",
+      description: "Walking distance to Shibuya Crossing.",
+      price: "₹8,900 / night",
+      rating: 4,
+      link: "hotel5.html"
+    }
+  ],
+
+  dubai: [
+    {
+      name: "Desert Pearl Hotel",
+      image: "dubai1.jpg",
+      description: "Premium desert view with rooftop pool.",
+      price: "₹13,500 / night",
+      rating: 5,
+      link: "hotel6.html"
+    },
+    {
+      name: "Burj View Residency",
+      image: "dubai2.jpg",
+      description: "Rooms facing Burj Khalifa skyline.",
+      price: "₹15,000 / night",
+      rating: 4,
+      link: "hotel7.html"
+    }
+  ],
+  goa: [
+  {
+    name: "Azure Sands Resort",
+    image: "goa1.jpg",
+    description: "Relaxing beachside stay with sunset views.",
+    price: "₹9,500 / night",
+    rating: 5,
+    link: "hotel8.html"
+  },
+  {
+    name: "Palm Haven Inn",
+    image: "goa2.jpg",
+    description: "Tropical vibe with pool and beach access.",
+    price: "₹8,200 / night",
+    rating: 4,
+    link: "hotel9.html"
+  }
+],
+switzerland: [
+  {
+    name: "Alpine Crown Hotel",
+    image: "switzerland1.jpg",
+    description: "Luxury stay in the Swiss Alps.",
+    price: "₹15,000 / night",
+    rating: 5,
+    link: "hotel10.html"
+  }
+],
+italy: [
+  {
+    name: "Villa Bellissimo",
+    image: "italy1.jpg",
+    description: "Romantic luxury stay in Tuscany.",
+    price: "₹8,000 / night",
+    rating: 5,
+    link: "hotel11.html"
+  }
+],
+kerala: [
+  {
+    name: "Kuttanadan Resort",
+    image: "kerala1.jpg",
+    description: "Luxury stay on Kerala backwaters.",
+    price: "₹5,400 / night",
+    rating: 5,
+    link: "hotel12.html"
+  }
+],
+bali: [
+  {
+    name: "Sunset Lagoon Resort",
+    image: "bali1.jpg",
+    description: "Luxury stay on Bali's coast.",
+    price: "₹8,500 / night",
+    rating: 5,
+    link: "hotel13.html"
+  }
+]
+};
+
+
+
+const form = document.querySelector(".search-form");
+const hotelResults = document.getElementById("hotelResults");
+const hotelList = document.getElementById("hotelList");
+const citySelect = document.getElementById("destinationCity");
+
+// ================= SAVE BOOKING DATA ON SEARCH =================
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const selectedCity = citySelect.value;
+  const hotels = hotelDatabase[selectedCity];
+
+  hotelList.innerHTML = "";
+
+  if (!selectedCity) {
+    hotelList.innerHTML = "<p>Please select a destination city.</p>";
+  } 
+  else if (!hotels) {
+    hotelList.innerHTML = "<p>No hotels found for this city.</p>";
+  } 
+  else {
+    hotels.forEach(hotel => {
+
+      const stars = "★".repeat(hotel.rating) + "☆".repeat(5 - hotel.rating);
+
+      const card = document.createElement("div");
+      card.className = "hotel-card";
+
+      card.innerHTML = `
+        <img src="${hotel.image}" class="hotel-img" alt="${hotel.name}">
+        <div class="hotel-info">
+          <h3>${hotel.name}</h3>
+          <div class="hotel-rating">${stars}</div>
+          <p>${hotel.description}</p>
+          <div class="hotel-bottom">
+            <span class="hotel-price">${hotel.price}</span>
+            <a class="book-btn" href="${hotel.link}">View Details</a>
+          </div>
+        </div>
+      `;
+
+      hotelList.appendChild(card);
+    });
+  }
+
+  hotelResults.style.display = "block";
+});
+
+})
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Burj View Residency | Near Burj Khalifa</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Lato',sans-serif;background:#E0F2FF;color:#03396C;}
+nav{position:fixed;width:100%;background:#0288D1;padding:15px 8%;display:flex;justify-content:space-between;align-items:center;z-index:1000;box-shadow:0 4px 10px rgba(0,0,0,0.2);}
+nav a{color:#fff;text-decoration:none;margin-left:25px;font-weight:600;transition:0.3s;}
+nav a:hover{color:#FFD700;}
+nav h2{color:#FFD700;}
+header{height:90vh;background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('burj.jpg');background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;}
+header h1{font-size:3rem;margin-bottom:15px;text-shadow:1px 1px 5px rgba(0,0,0,0.5);}
+header .btn{background:#FFD700;color:#03396C;padding:12px 25px;text-decoration:none;border-radius:25px;font-weight:700;transition:0.3s;}
+header .btn:hover{background:#fff;}
+section{padding:80px 8%;}
+.section-title{text-align:center;color:#0288D1;margin-bottom:40px;font-size:2rem;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;}
+.card{background:#fff;border-radius:15px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.1);transition:0.3s;}
+.card:hover{transform:translateY(-5px);}
+.card img{width:100%;height:220px;object-fit:cover;}
+.card-content{padding:20px;}
+.card-content h3{color:#0288D1;margin-bottom:10px;}
+.card-content p{line-height:1.6;color:#03396C;}
+.review{background:#B3E5FC;padding:20px;border-radius:10px;}
+form{background:#fff;padding:30px;border-radius:15px;max-width:600px;margin:auto;box-shadow:0 4px 20px rgba(0,0,0,0.1);}
+form input, form select, form textarea{width:100%;padding:12px;margin:10px 0;border:1px solid #0288D1;border-radius:8px;}
+form button{background:#0288D1;color:#fff;padding:12px;border:none;width:100%;border-radius:25px;font-weight:700;cursor:pointer;transition:0.3s;}
+form button:hover{background:#FFD700;color:#03396C;}
+footer{background:#0288D1;text-align:center;padding:20px;color:#fff;}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px;}
+.gallery img{width:100%;border-radius:10px;}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+<h2>Burj View Residency</h2>
+<div>
+<a href="#about">About</a>
+<a href="#rooms">Rooms</a>
+<a href="#experience">Experience</a>
+<a href="#menu">Dining</a>
+<a href="#amenities">Amenities</a>
+<a href="#gallery">Gallery</a>
+<a href="#booking">Book</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<header>
+<div>
+<h1>Stay Steps Away from Burj Khalifa</h1>
+<a href="#booking" class="btn">Reserve Now</a>
+</div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+<h2 class="section-title">About Us</h2>
+<p style="text-align:center;max-width:800px;margin:auto;font-size:1.1rem;">
+Burj View Residency offers a premium stay with breathtaking views of Burj Khalifa. Enjoy elegantly designed rooms, rooftop lounge, fine dining, and experiences that bring Dubai’s iconic skyline right to your window.
+</p>
+</section>
+
+<!-- ROOMS -->
+<section id="rooms">
+<h2 class="section-title">Our Rooms</h2>
+<div class="grid">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688">
+<div class="card-content">
+<h3>Skyline Room</h3>
+<p>Elegant room with king bed and balcony facing Burj Khalifa.</p>
+<p><strong>₹15,000 / Night</strong></p>
+</div>
+</div>
+<div class="card">
+<img src="hotel 7.1.jpg">
+<div class="card-content">
+<h3>Executive Suite</h3>
+<p>Spacious suite with lounge and skyline terrace.</p>
+<p><strong>₹20,000 / Night</strong></p>
+</div>
+</div>
+<div class="card">
+<img src="hotel 7.2.jpg">
+<div class="card-content">
+<h3>Penthouse Suite</h3>
+<p>Luxury penthouse with private balcony and panoramic view of Burj Khalifa.</p>
+<p><strong>₹35,000 / Night</strong></p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+<h2 class="section-title">Exclusive Experiences</h2>
+<div class="grid">
+<div class="card"><img src="hotel 7.3.webp"><div class="card-content">
+<h3>Helicopter Tour</h3>
+<p>See the city from above and enjoy stunning views of Dubai landmarks.</p>
+</div></div>
+<div class="card"><img src="hotel 7.4.webp"><div class="card-content">
+<h3>Rooftop Pool</h3>
+<p>Relax above the city with cocktails and panoramic skyline views.</p>
+</div></div>
+<div class="card"><img src="hotel 7.5.jpg"><div class="card-content">
+<h3>Sky Lounge</h3>
+<p>Exclusive lounge offering drinks and sunset views near Burj Khalifa.</p>
+</div></div>
+</div>
+</section>
+
+<!-- DINING -->
+<section id="menu">
+<h2 class="section-title">Dining</h2>
+<div class="grid">
+<div class="card"><img src="hotel 7.6.jpeg"><div class="card-content">
+<h3>Main Courses</h3>
+<p>Grilled Wagyu Steak – ₹2,500</p>
+<p>Seared Salmon – ₹2,200</p>
+<p>Signature Risotto – ₹1,800</p>
+</div></div>
+<div class="card"><img src="hotel 7.7.jpg"><div class="card-content">
+<h3>Desserts</h3>
+<p>Chocolate Dome – ₹950</p>
+<p>Pistachio Delight – ₹750</p>
+<p>Skyline Special Dessert – ₹1,100</p>
+</div></div>
+</div>
+</section>
+
+<!-- AMENITIES -->
+<section id="amenities">
+<h2 class="section-title">Amenities</h2>
+<div class="grid">
+<div class="card"><div class="card-content"><h3>Spa & Wellness</h3><p>Relaxing spa and massage treatments.</p></div></div>
+<div class="card"><div class="card-content"><h3>Gym</h3><p>Fully equipped fitness center.</p></div></div>
+<div class="card"><div class="card-content"><h3>Valet & Concierge</h3><p>Professional 24/7 service for convenience.</p></div></div>
+<div class="card"><div class="card-content"><h3>WiFi</h3><p>High-speed internet throughout the hotel.</p></div></div>
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section>
+<h2 class="section-title">Reviews</h2>
+<div class="grid">
+<div class="review">⭐⭐⭐⭐⭐<p>"Perfect location! Stunning views of Burj Khalifa right from our room."</p></div>
+<div class="review">⭐⭐⭐⭐⭐<p>"Luxurious stay, friendly staff, and rooftop pool is amazing."</p></div>
+<div class="review">⭐⭐⭐⭐⭐<p>"Highly recommend for anyone visiting Dubai. Top-notch experience!"</p></div>
+</div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+<h2 class="section-title">Book Your Stay</h2>
+<form onsubmit="calculatePrice(event)">
+<input type="text" placeholder="Full Name" required>
+<input type="date" id="checkin" required>
+<input type="date" id="checkout" required>
+<select id="roomType" required>
+<option value="">Select Room</option>
+<option value="15000">Skyline Room - ₹15,000</option>
+<option value="20000">Executive Suite - ₹20,000</option>
+<option value="35000">Penthouse Suite - ₹35,000</option>
+</select>
+<textarea placeholder="Special Requests" rows="3"></textarea>
+<button type="button" onclick="goToPayment()">Reserve Now</button>
+<p id="totalPrice" style="margin-top:15px;color:#0288D1;font-weight:700;"></p>
+</form>
+</section>
+<section id="paymentSection" style="display:none;">
+<h2 class="section-title">Secure Payment</h2>
+
+<form>
+
+<p><strong>Hotel:</strong> Burj View Residency</p>
+<p><strong>Check-in:</strong> <span id="checkinDisplay"></span></p>
+<p><strong>Check-out:</strong> <span id="checkoutDisplay"></span></p>
+<p><strong>Total Amount:</strong> ₹<span id="totalDisplay"></span></p>
+
+<input id="cardName" type="text" placeholder="Cardholder Name">
+<input id="cardNumber" type="text" placeholder="Card Number" maxlength="19">
+
+<div style="display:flex;gap:10px;">
+<input id="expiry" type="text" placeholder="MM/YY" maxlength="5">
+<input id="cvv" type="text" placeholder="CVV" maxlength="3">
+</div>
+
+<button type="button" onclick="processPayment()">Pay Securely</button>
+
+</form>
+</section>
+<section id="successSection" style="display:none;">
+<h2 class="section-title">Booking Status</h2>
+
+<div style="text-align:center">
+
+<h3 style="color:#0288D1;font-size:28px;">✔ Booking Confirmed</h3>
+
+<p>Your luxury stay at Burj View Residency has been successfully reserved.</p>
+
+<a href="hotel_ticket.html"
+style="
+display:inline-block;
+padding:12px 30px;
+background:#0288D1;
+color:white;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;">
+View Booking Ticket
+</a>
+
+</div>
+</section>
+<!-- CONTACT -->
+<section id="contact">
+<h2 class="section-title">Contact Us</h2>
+<p style="text-align:center;">
+📍 Downtown Dubai, UAE<br>
+📞 +971 55 123 4567<br>
+✉ reservations@burjviewresidency.com
+</p>
+</section>
+
+<footer>
+© 2026 Burj View Residency | Luxury Stay Near Burj Khalifa
+</footer>
+
+<script>
+
+function goToPayment(){
+
+const checkin = document.getElementById("checkin").value;
+const checkout = document.getElementById("checkout").value;
+const roomPrice = parseInt(document.getElementById("roomType").value);
+
+if(!checkin || !checkout || !roomPrice){
+alert("Please complete booking details.");
+return;
+}
+
+const checkinDate = new Date(checkin);
+const checkoutDate = new Date(checkout);
+
+if(checkoutDate <= checkinDate){
+alert("Checkout must be after checkin.");
+return;
+}
+
+const nights = (checkoutDate - checkinDate) / (1000*60*60*24);
+const total = nights * roomPrice;
+
+document.getElementById("checkinDisplay").textContent = checkin;
+document.getElementById("checkoutDisplay").textContent = checkout;
+document.getElementById("totalDisplay").textContent = total;
+
+localStorage.setItem("hotelBookingData", JSON.stringify({
+city:"Dubai",
+hotelName:"Burj View Residency",
+checkin,
+checkout,
+totalAmount: total
+}));
+
+document.getElementById("paymentSection").style.display="block";
+
+document.getElementById("paymentSection").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+function processPayment(){
+
+const name = document.getElementById("cardName").value.trim();
+const number = document.getElementById("cardNumber").value.trim();
+const expiry = document.getElementById("expiry").value.trim();
+const cvv = document.getElementById("cvv").value.trim();
+
+if(!name || !number || !expiry || !cvv){
+alert("Please fill payment details.");
+return;
+}
+
+if(number.length < 12){
+alert("Enter valid card number.");
+return;
+}
+
+if(cvv.length !== 3){
+alert("Enter valid CVV.");
+return;
+}
+
+document.getElementById("paymentSection").style.display="none";
+document.getElementById("successSection").style.display="block";
+
+document.getElementById("successSection").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+const expiryInput = document.getElementById("expiry");
+
+expiryInput.addEventListener("input", function(e){
+
+let value = e.target.value.replace(/\D/g,"");
+value = value.substring(0,4);
+
+if(value.length >=3){
+value = value.substring(0,2) + "/" + value.substring(2);
+}
+
+e.target.value = value;
+
+});
+
+</script>
+</body>
+</html>

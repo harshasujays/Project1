@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azure Sands Resort - Goa</title>
+
+<!-- Google Fonts & Font Awesome -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins', sans-serif;background:#f5f7fa;color:#333;}
+.container{width:90%; max-width:1200px; margin:50px auto;}
+
+/* Hero Section */
+.hero{
+    height:450px;
+    background:url('hotel-1-goa1.jpg') center/cover no-repeat;
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+}
+.hero::after{
+    content:""; position:absolute; inset:0; background:rgba(0,0,0,0.3);
+}
+.hero-content{
+    position:relative; color:white; text-align:center;
+}
+.hero-content h1{
+    font-family:'Playfair Display', serif; 
+    font-size:50px; 
+    margin-bottom:10px; 
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+}
+.hero-content .stars{
+    display:inline-block;
+    background: #FFD700;       /* solid gold */
+    color: #000;               /* contrast text */
+    font-size:48px;            /* bigger font */
+    padding:12px 25px;
+    border-radius:30px;
+    font-weight:900;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.7), 0 0 20px rgba(255,215,0,0.8);
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    margin-top:15px;
+}
+
+/* Sections */
+.section{
+    background:white; 
+    padding:40px; 
+    border-radius:25px; 
+    box-shadow:0 10px 30px rgba(0,0,0,0.15); 
+    margin-bottom:50px;
+}
+.section h2{
+    font-family:'Playfair Display', serif; 
+    font-size:32px; 
+    color:#2ea7f8; 
+    margin-bottom:20px;
+}
+.room-gallery, .facility-gallery, .menu-gallery, .attractions-gallery{
+    display:flex; flex-wrap:wrap; gap:20px;
+}
+.room-gallery img, .facility-gallery img, .menu-gallery img, .attractions-gallery img{
+    width:32%; 
+    border-radius:15px; 
+    box-shadow:0 6px 20px rgba(0,0,0,0.2); 
+    height:220px; 
+    object-fit:cover; 
+    transition:0.4s;
+}
+.room-gallery img:hover, .facility-gallery img:hover, .menu-gallery img:hover, .attractions-gallery img:hover{
+    transform:scale(1.07);
+}
+
+/* Booking Box */
+.booking-box{
+    background: linear-gradient(135deg, #e4d580, #e4d580); /* bright gold gradient */
+    color:#000; 
+    padding:60px 50px; 
+    border-radius:35px; 
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);  
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.booking-box:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 25px 70px rgba(0,0,0,0.6);
+}
+.booking-box h3{
+    font-size:36px;
+    font-weight:900;
+    margin-bottom:35px;
+    text-align:center;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+.booking-box input, .booking-box select{
+    width:100%;
+    padding:15px 20px;
+    margin-bottom:20px;
+    border:none;
+    border-radius:20px;
+    font-size:16px;
+}
+.booking-box button{
+    background: #2ea7f8;       /* bright blue */
+    color:white;
+    font-weight:900;
+    font-size:22px;
+    padding:22px 45px;
+    border-radius:30px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.5);
+    cursor:pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+.booking-box button:hover{
+    background:#1976d2;
+    transform: scale(1.08);
+    box-shadow:0 15px 35px rgba(0,0,0,0.6);
+}
+
+@media(max-width:768px){
+    .room-gallery img, .facility-gallery img, .menu-gallery img, .attractions-gallery img{width:100%;}
+    .container{width:95%;}
+    .section{padding:20px;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Hero -->
+<div class="hero">
+    <div class="hero-content">
+        <h1>Azure Sands Resort</h1>
+        <div class="stars">★★★★★</div>
+    </div>
+</div>
+
+<!-- Rooms -->
+<div class="section">
+    <h2>Rooms</h2>
+    <div class="room-gallery">
+        <img src="hotel-1-goa-2.jpg" alt="Deluxe Room">
+        <img src="hotel-1-goa-3.jpg" alt="Suite Room">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Presidential Suite">
+    </div>
+</div>
+
+<!-- Facilities -->
+<div class="section">
+    <h2>Facilities</h2>
+    <div class="facility-gallery">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Private Beach">
+        <img src="hotel-1-goa-4.jpg" alt="Spa & Wellness">
+        <img src="hotel-1-goa-8.jpeg" alt="Infinity Pool">
+        <img src="hotel-1-goa-5.jpg" alt="Luxury Gym">
+        <img src="hotel-1-goa-6.jpg" alt="24/7 Concierge">
+        <img src="hotel-1-goa-9.jpg" alt="Conference Halls">
+    </div>
+</div>
+
+<!-- Menu -->
+<div class="section">
+    <h2>Sample Menu</h2>
+    <div class="menu-gallery">
+        <img src="hotel-1-goa-7.jpg" alt="Goan Prawn Curry">
+        <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90" alt="Coconut Fish Fry">
+        <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f" alt="Beef Xacuti">
+    </div>
+</div>
+
+<!-- Attractions -->
+<div class="section">
+    <h2>Nearby Attractions</h2>
+    <div class="attractions-gallery">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Beach">
+        <img src="hotel-1-goa-10.jpeg" alt="Market">
+        <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2" alt="View">
+    </div>
+</div>
+
+<!-- Booking -->
+<div class="section booking-box">
+    <h3>Book Your Stay</h3>
+    <input type="text" placeholder="Full Name" id="name">
+<input type="email" placeholder="Email Address" id="email">
+<input type="date" id="checkin">
+<input type="date" id="checkout">
+
+<select id="roomType">
+    <option value="">Select Room</option>
+    <option value="12000">Deluxe Room</option>
+    <option value="18000">Suite Room</option>
+    <option value="25000">Presidential Suite</option>
+</select>
+
+<button onclick="goToPayment()">Book Now</button>
+</div>
+<section id="paymentSection" style="display:none;" class="section booking-box">
+
+<h3>Secure Payment</h3>
+
+<p><strong>Hotel:</strong> Azure Sands Resort</p>
+<p><strong>Check-in:</strong> <span id="checkinDisplay"></span></p>
+<p><strong>Check-out:</strong> <span id="checkoutDisplay"></span></p>
+<p><strong>Total Amount:</strong> ₹<span id="totalDisplay"></span></p>
+
+<input id="cardName" type="text" placeholder="Cardholder Name">
+<input id="cardNumber" type="text" placeholder="Card Number" maxlength="19">
+
+<div style="display:flex;gap:10px;">
+<input id="expiry" type="text" placeholder="MM/YY" maxlength="5">
+<input id="cvv" type="text" placeholder="CVV" maxlength="3">
+</div>
+
+<button onclick="processPayment()">Pay Securely</button>
+
+</section>
+<section id="successSection" style="display:none;" class="section booking-box">
+
+<h3 style="text-align:center;">✔ Booking Confirmed</h3>
+
+<p style="text-align:center;">
+Your stay at Azure Sands Resort has been successfully reserved.
+</p>
+
+<div style="text-align:center;margin-top:20px;">
+<a href="hotel_ticket.html"
+style="
+display:inline-block;
+padding:12px 30px;
+background:#2ea7f8;
+color:white;
+border-radius:25px;
+text-decoration:none;
+font-weight:600;">
+View Booking Ticket
+</a>
+</div>
+
+</section>
+</div>
+<script>
+
+function goToPayment(){
+
+const name = document.getElementById("name").value.trim();
+const email = document.getElementById("email").value.trim();
+const checkin = document.getElementById("checkin").value;
+const checkout = document.getElementById("checkout").value;
+const roomPrice = parseInt(document.getElementById("roomType").value);
+
+if(!name || !email || !checkin || !checkout || !roomPrice){
+alert("Please complete booking details.");
+return;
+}
+
+const checkinDate = new Date(checkin);
+const checkoutDate = new Date(checkout);
+
+if(checkoutDate <= checkinDate){
+alert("Checkout must be after checkin.");
+return;
+}
+
+const nights = (checkoutDate - checkinDate) / (1000*60*60*24);
+const total = nights * roomPrice;
+
+document.getElementById("checkinDisplay").textContent = checkin;
+document.getElementById("checkoutDisplay").textContent = checkout;
+document.getElementById("totalDisplay").textContent = total;
+
+localStorage.setItem("hotelBookingData", JSON.stringify({
+city:"Goa",
+hotelName:"Azure Sands Resort",
+checkin,
+checkout,
+totalAmount: total
+}));
+
+document.getElementById("paymentSection").style.display="block";
+
+document.getElementById("paymentSection").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+function processPayment(){
+
+const name = document.getElementById("cardName").value.trim();
+const number = document.getElementById("cardNumber").value.trim();
+const expiry = document.getElementById("expiry").value.trim();
+const cvv = document.getElementById("cvv").value.trim();
+
+if(!name || !number || !expiry || !cvv){
+alert("Please fill payment details.");
+return;
+}
+
+if(number.length < 12){
+alert("Enter valid card number.");
+return;
+}
+
+if(cvv.length !== 3){
+alert("Enter valid CVV.");
+return;
+}
+
+document.getElementById("paymentSection").style.display="none";
+document.getElementById("successSection").style.display="block";
+
+document.getElementById("successSection").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+const expiryInput = document.getElementById("expiry");
+
+expiryInput.addEventListener("input", function(e){
+
+let value = e.target.value.replace(/\D/g, ""); // numbers only
+
+value = value.substring(0,4); // limit to 4 digits
+
+if(value.length >= 3){
+value = value.substring(0,2) + "/" + value.substring(2);
+}
+
+e.target.value = value;
+
+});
+</script>
+</body>
+</html>

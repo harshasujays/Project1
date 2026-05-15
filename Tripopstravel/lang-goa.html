@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Languages of Goa</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* Remove the body { ... } rule entirely to keep your main background */
+
+/* Scope everything to the #languages ID */
+#languages .hero {
+    height: 40vh; /* Reduced height to fit inside the tab better */
+    background: url("lang goa-1.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
+    position: relative;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+#languages .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+}
+
+#languages .hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+#languages .section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+#languages h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #10337e;
+}
+
+/* This prevents the phrase style from leaking to other cards */
+#languages .phrase {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9fbff;
+    padding: 12px 18px;
+    margin: 10px 0;
+    border-radius: 12px;
+    border: 1px solid #e0eafc;
+}
+
+#languages .phrase button {
+    border: none;
+    background: #2ea7f8;
+    color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+</style>
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+    <div class="hero-content">
+        <div class="line"></div>
+        <h1>Languages <span>of Goa</span></h1>
+        <p>Discover communication essentials for visitors</p>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- Konkani -->
+    <div class="section">
+        <h2>Konkani (Official Language)</h2>
+        <div class="phrase">
+            <span>Hello: Dev Borem Korum</span>
+            <button onclick="speak('Dev Borem Korum')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>How are you?: Kaso Asa?</span>
+            <button onclick="speak('Kaso Asa?')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>How much?: Kitlem?</span>
+            <button onclick="speak('Kitlem?')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>Yes: Hanv</span>
+            <button onclick="speak('Hanv')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>No: Na</span>
+            <button onclick="speak('Na')"><i class="fa-solid fa-play"></i></button>
+        </div>
+    </div>
+
+    <!-- Marathi -->
+    <div class="section">
+        <h2>Marathi</h2>
+        <div class="phrase">
+            <span>Hello: Namaskar</span>
+            <button onclick="speak('Namaskar')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>Thank You: Dhanyavaad</span>
+            <button onclick="speak('Dhanyavaad')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>How are you?: Tumhi kashe aahat?</span>
+            <button onclick="speak('Tumhi kashe aahat?')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>How much?: Kiti?</span>
+            <button onclick="speak('Kiti?')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>Yes: Ho</span>
+            <button onclick="speak('Ho')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>No: Nahi</span>
+            <button onclick="speak('Nahi')"><i class="fa-solid fa-play"></i></button>
+        </div>
+    </div>
+
+    <!-- Hindi -->
+    <div class="section">
+        <h2>Hindi</h2>
+        <div class="phrase">
+            <span>Hello: Namaste</span>
+            <button onclick="speak('Namaste')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>Thank You: Dhanyavaad</span>
+            <button onclick="speak('Dhanyavaad')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>How are you?: Aap kaise hain?</span>
+            <button onclick="speak('Aap kaise hain?')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>How much?: Kitna?</span>
+            <button onclick="speak('Kitna?')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>Yes: Haan</span>
+            <button onclick="speak('Haan')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>No: Nahi</span>
+            <button onclick="speak('Nahi')"><i class="fa-solid fa-play"></i></button>
+        </div>
+    </div>
+
+    <!-- Portuguese -->
+    <div class="section">
+        <h2>Portuguese (Historical Influence)</h2>
+        <div class="phrase">
+            <span>Hello: Olá</span>
+            <button onclick="speak('Olá')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>Thank You: Obrigado / Obrigada</span>
+            <button onclick="speak('Obrigado / Obrigada')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>How are you?: Como está?</span>
+            <button onclick="speak('Como está?')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>How much?: Quanto custa?</span>
+            <button onclick="speak('Quanto custa?')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>Yes: Sim</span>
+            <button onclick="speak('Sim')"><i class="fa-solid fa-play"></i></button>
+        </div>
+        <div class="phrase">
+            <span>No: Não</span>
+            <button onclick="speak('Não')"><i class="fa-solid fa-play"></i></button>
+        </div>
+    </div>
+</div>
+
+<script>
+function speak(text) {
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = 'en-US';  // works in all browsers
+    speech.rate = 0.9;
+    window.speechSynthesis.speak(speech);
+}
+</script>
+
+
+
+</body>
+</html>

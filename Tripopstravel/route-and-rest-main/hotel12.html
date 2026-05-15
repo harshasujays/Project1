@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backwater Crown Resort | Kerala</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+font-family:Poppins,sans-serif;
+background:#f2f7f3;
+color:#1b4332;
+}
+
+/* HERO */
+
+.hero{
+height:420px;
+background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+url("https://images.unsplash.com/photo-1602216056096-3b40cc0c9944") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:48px;
+margin-bottom:10px;
+}
+
+.stars{
+background:#d4af37;
+color:black;
+padding:8px 18px;
+border-radius:30px;
+font-weight:700;
+}
+
+/* SECTION */
+
+.section{
+padding:60px 10%;
+}
+
+.section h2{
+font-family:'Playfair Display',serif;
+margin-bottom:30px;
+color:#2d6a4f;
+}
+
+/* ROOMS */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.price{
+color:#2d6a4f;
+font-weight:600;
+}
+
+/* BOOKING */
+
+.booking{
+background:#2d6a4f;
+color:white;
+padding:40px;
+border-radius:20px;
+max-width:550px;
+margin:auto;
+box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+.booking input,
+.booking select{
+width:100%;
+padding:12px;
+margin:10px 0 18px;
+border-radius:10px;
+border:none;
+}
+
+.booking button{
+width:100%;
+padding:14px;
+background:#d4af37;
+border:none;
+border-radius:30px;
+font-weight:700;
+cursor:pointer;
+}
+
+.booking button:hover{
+background:#c8a72e;
+}
+
+/* PAYMENT */
+
+.payment-card{
+display:none;
+margin-top:40px;
+}
+
+.card-ui{
+background:white;
+padding:30px;
+border-radius:20px;
+max-width:450px;
+margin:auto;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.card-ui label{
+font-size:14px;
+font-weight:600;
+}
+
+.card-ui input{
+width:100%;
+padding:10px;
+margin-top:6px;
+margin-bottom:15px;
+border-radius:8px;
+border:1px solid #ddd;
+}
+
+.pay-btn{
+background:#2d6a4f;
+color:white;
+border:none;
+padding:12px;
+border-radius:20px;
+cursor:pointer;
+width:100%;
+font-weight:600;
+}
+
+.pay-btn:hover{
+background:#1b4332;
+}
+
+/* SUCCESS */
+
+.success{
+display:none;
+text-align:center;
+margin-top:40px;
+}
+
+.success h3{
+color:#2d6a4f;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<div class="hero">
+<div>
+<h1>Kuttanadan Resort</h1>
+<div class="stars">★★★★★</div>
+<p>Luxury stay on Kerala backwaters</p>
+</div>
+</div>
+
+<!-- ROOMS -->
+
+<section class="section">
+
+<h2>Rooms & Villas</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2">
+<div class="card-content">
+<h3>Backwater Deluxe Room</h3>
+<p>Balcony overlooking the lake.</p>
+<p class="price">₹7,500 / night</p>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c">
+<div class="card-content">
+<h3>Private Villa</h3>
+<p>Private garden and lake access.</p>
+<p class="price">₹12,000 / night</p>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1590490360182-c33d57733427">
+<div class="card-content">
+<h3>Houseboat Suite</h3>
+<p>Luxury stay on traditional houseboat.</p>
+<p class="price">₹15,000 / night</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- BOOKING -->
+
+<section class="section">
+
+<h2>Reserve Your Stay</h2>
+
+<div class="booking">
+
+<input type="text" id="name" placeholder="Full Name">
+<input type="email" id="email" placeholder="Email Address">
+
+<label>Check-in</label>
+<input type="date" id="checkin">
+
+<label>Check-out</label>
+<input type="date" id="checkout">
+
+<select id="roomType">
+<option value="">Select Room</option>
+<option value="7500">Backwater Deluxe Room</option>
+<option value="12000">Private Villa</option>
+<option value="15000">Houseboat Suite</option>
+</select>
+
+<button onclick="goToPayment()">Continue to Payment</button>
+
+</div>
+
+</section>
+
+<!-- PAYMENT -->
+
+<section class="section payment-card" id="paymentSection">
+
+<h2 style="text-align:center">Secure Payment</h2>
+
+<div class="card-ui">
+
+<p><strong>Total Amount:</strong> ₹<span id="totalAmount"></span></p>
+
+<label>Cardholder Name</label>
+<input id="cardName" placeholder="name">
+
+<label>Card Number</label>
+<input id="cardNumber"  maxlength="19">
+
+<div style="display:flex;gap:10px">
+
+<div style="flex:1">
+<label>Expiry</label>
+<input id="expiry" placeholder="MM/YY" maxlength="5">
+</div>
+
+<div style="flex:1">
+<label>CVV</label>
+<input id="cvv" maxlength="3">
+</div>
+
+</div>
+
+<button class="pay-btn" onclick="processPayment()">Pay Now</button>
+
+</div>
+
+</section>
+
+<!-- SUCCESS -->
+
+<section class="section success" id="successSection">
+
+<h3>✔ Booking Confirmed</h3>
+<p>Your stay at Backwater Crown Resort is reserved.</p>
+
+<a href="hotel_ticket.html">
+<button class="pay-btn">View Booking Ticket</button>
+</a>
+
+</section>
+
+<script>
+
+function goToPayment(){
+
+const name=document.getElementById("name").value.trim();
+const email=document.getElementById("email").value.trim();
+const checkin=document.getElementById("checkin").value;
+const checkout=document.getElementById("checkout").value;
+const price=parseInt(document.getElementById("roomType").value);
+
+if(!name || !email || !checkin || !checkout || !price){
+alert("Please complete booking details");
+return;
+}
+
+const nights=(new Date(checkout)-new Date(checkin))/(1000*60*60*24);
+
+if(nights<=0){
+alert("Checkout must be after checkin");
+return;
+}
+
+const total=nights*price;
+
+document.getElementById("totalAmount").textContent=total;
+
+localStorage.setItem("hotelBookingData",JSON.stringify({
+
+city:"Kerala",
+hotelName:"Kuttanadan Resort",
+checkin,
+checkout,
+guests:1,
+totalAmount:total
+
+}));
+
+document.getElementById("paymentSection").style.display="block";
+
+}
+
+function processPayment(){
+
+const number=document.getElementById("cardNumber").value.replace(/\s/g,"");
+const cvv=document.getElementById("cvv").value;
+
+if(number.length<12){
+alert("Enter valid card number");
+return;
+}
+
+if(cvv.length!==3){
+alert("Invalid CVV");
+return;
+}
+
+document.getElementById("paymentSection").style.display="none";
+document.getElementById("successSection").style.display="block";
+
+}
+
+/* auto format expiry */
+
+const expiry=document.getElementById("expiry");
+
+expiry.addEventListener("input",function(e){
+
+let value=e.target.value.replace(/\D/g,"").substring(0,4);
+
+if(value.length>=3){
+value=value.substring(0,2)+"/"+value.substring(2);
+}
+
+e.target.value=value;
+
+});
+
+</script>
+
+</body>
+</html>

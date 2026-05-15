@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Ticket | StayOps</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+body{
+margin:0;
+font-family:Poppins,sans-serif;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+min-height:100vh;
+background:white;
+color:#1e293b;
+}
+
+.ticket{
+width:650px;
+color:#1e293b;
+border-radius:20px;
+border:3px solid #1e293b;
+overflow:hidden;
+box-shadow:0 15px 40px rgba(0,0,0,.15);
+background:white;
+background-image:
+linear-gradient(#f8fafc 1px, transparent 1px);
+background-size:100% 28px;
+}
+
+
+.ticket-header{
+padding:20px 30px;
+font-weight:700;
+font-size:22px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#1e293b;
+color:white;
+}
+
+.ticket-body{
+display:grid;
+grid-template-columns:2fr 1fr;
+padding:30px;
+gap:20px;
+}
+
+.ticket-info p{
+margin:6px 0;
+font-size:16px;
+}
+
+.booking-id{
+font-weight:700;
+margin:15px 0;
+}
+
+.ticket-qr{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+border-left:2px dashed #ddd;
+padding-left:20px;
+}
+
+.ticket-footer{
+text-align:center;
+padding:20px;
+border-top:1px dashed #ddd;
+}
+
+.download-btn{
+margin-top:15px;
+padding:12px 30px;
+border-radius:40px;
+border:none;
+font-weight:600;
+cursor:pointer;
+background:#1e293b;   /* same color as header */
+color:white;
+transition:all .2s ease;
+}
+
+.download-btn:hover{
+background:#334155;
+transform:translateY(-2px);
+box-shadow:0 6px 15px rgba(0,0,0,0.15);
+}
+
+.back-home-btn{
+position:fixed;
+top:30px;
+left:30px;
+padding:12px 28px;
+border-radius:40px;
+font-weight:600;
+text-decoration:none;
+}
+.ticket{
+position:relative;
+}
+
+.ticket::before,
+.ticket::after{
+content:"";
+position:absolute;
+top:50%;
+width:20px;
+height:20px;
+background:white;
+border-radius:50%;
+transform:translateY(-50%);
+}
+
+.ticket::before{
+left:-10px;
+}
+
+.ticket::after{
+right:-10px;
+}
+.booking-id{
+font-weight:700;
+font-size:18px;
+letter-spacing:2px;
+padding:10px 0;
+border-top:1px dashed #ccc;
+border-bottom:1px dashed #ccc;
+margin:15px 0;
+}
+@media print{
+.back-home-btn{
+display:none;
+}
+}
+#qrcode{
+margin-top:10px;
+}
+.download-btn{
+margin-top:15px;
+padding:12px 28px;
+border-radius:40px;
+border:none;
+font-weight:600;
+cursor:pointer;
+background:#2563eb;
+color:white;
+transition:.2s;
+}
+
+.download-btn:hover{
+transform:scale(1.05);
+}
+.ticket-qr{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+border-left:2px dashed #ddd;
+padding-left:20px;
+gap:10px;
+min-width:160px;
+}
+#qrcode{
+width:120px;
+height:120px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+</style>
+</head>
+
+<body>
+
+<a href="booking page.html" class="back-home-btn">← Back to Home</a>
+
+<div class="ticket" id="ticket">
+
+<div class="ticket-header">
+<span id="hotelName">StayOps Hotel</span>
+<span>BOOKING PASS</span>
+</div>
+
+<div class="ticket-body">
+
+<div class="ticket-info">
+
+<div class="booking-id" id="bookingId"></div>
+
+<p><strong>City:</strong> <span id="city"></span></p>
+<p><strong>Check-in:</strong> <span id="checkin"></span></p>
+<p><strong>Check-out:</strong> <span id="checkout"></span></p>
+<p><strong>Stay:</strong> <span id="nights"></span> Nights</p>
+<p><strong>Guests:</strong> <span id="guests"></span></p>
+<p><strong>Total Paid:</strong> ₹<span id="total"></span></p>
+<p><strong>Issued:</strong> <span id="issueDate"></span></p>
+
+</div>
+
+<div class="ticket-qr">
+
+<div id="qrcode"></div>
+<p style="margin-top:10px;font-size:12px;">Scan at Reception</p>
+
+</div>
+
+</div>
+
+
+<div class="ticket-footer">
+
+<button class="download-btn" onclick="downloadTicket()">
+Download Ticket
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+<script>
+const data = JSON.parse(localStorage.getItem("hotelBookingData"));
+
+if(!data){
+document.body.innerHTML="<h2>No booking found</h2>";
+}
+else{
+
+document.getElementById("hotelName").textContent=data.hotelName;
+document.getElementById("city").textContent=data.city;
+document.getElementById("checkin").textContent=data.checkin;
+document.getElementById("checkout").textContent=data.checkout;
+document.getElementById("guests").textContent=data.guests;
+document.getElementById("total").textContent=data.totalAmount || "0";
+
+document.getElementById("issueDate").textContent =
+new Date().toLocaleDateString();
+
+/* nights calculation */
+
+const checkin = new Date(data.checkin);
+const checkout = new Date(data.checkout);
+
+const nights = Math.ceil((checkout - checkin)/(1000*60*60*24));
+
+document.getElementById("nights").textContent = nights;
+
+/* booking id */
+
+if(!data.bookingId){
+data.bookingId = "STAYOPS-" + Date.now();
+localStorage.setItem("hotelBookingData", JSON.stringify(data));
+}
+
+document.getElementById("bookingId").textContent =
+"Booking ID: " + data.bookingId;
+
+
+
+
+/* QR CODE */
+document.getElementById("qrcode").innerHTML = "";
+const qrData = data.bookingId;  
+
+new QRCode(document.getElementById("qrcode"), {
+    text: qrData,
+    width: 120,
+    height: 120
+});
+/* theme */
+
+if(data.theme && data.theme.useCustomTheme){
+
+document.querySelector(".ticket-header").style.background=data.theme.primary;
+document.querySelector(".download-btn").style.background=data.theme.primary;
+document.querySelector(".back-home-btn").style.background=data.theme.primary;
+
+}
+
+}
+
+function downloadTicket(){
+
+const button = document.querySelector(".download-btn");
+button.style.display = "none";   // hide button
+
+const element = document.getElementById("ticket");
+
+html2pdf().from(element).save(`StayOps_${data.bookingId}.pdf`).then(() => {
+    button.style.display = "block";   // show button again
+});
+
+}
+</script>
+</body>
+</html>

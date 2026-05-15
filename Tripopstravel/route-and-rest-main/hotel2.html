@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eiffel Stay Inn</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= FULL PAGE BACKGROUND ================= */
+
+body{
+    margin:0;
+    font-family:'Montserrat',sans-serif;
+    color:#fff;
+    position:relative;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:url('hotel3.jpeg') center/cover no-repeat;
+    filter:blur(7px);
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.65);
+    z-index:-1;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    text-align:center;
+    padding:140px 20px 100px;
+}
+
+header h1{
+    font-family:'Playfair Display',serif;
+    font-size:85px;
+    letter-spacing:4px;
+    margin:0;
+    text-transform:uppercase;
+    font-weight:700;
+    background:linear-gradient(to right,#f4c542,#ffffff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:0 5px 30px rgba(0,0,0,0.7);
+}
+
+.stars{
+    color:#f4c542;
+    font-size:24px;
+    margin:20px 0;
+}
+
+.price{
+    font-size:24px;
+    font-weight:600;
+    margin-top:15px;
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+    padding:80px 8%;
+}
+
+h2{
+    text-align:center;
+    font-family:'Playfair Display',serif;
+    font-size:38px;
+    margin-bottom:50px;
+}
+
+/* ================= GLASS CARD ================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(15px);
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 8px 35px rgba(0,0,0,0.5);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-12px);
+}
+
+.card img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+}
+
+.card h3{
+    padding:15px;
+    margin:0;
+}
+
+.card p{
+    padding:0 15px 15px;
+    font-size:14px;
+}
+
+/* ================= BOOKING ================= */
+
+.booking{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(20px);
+    border-radius:25px;
+    padding:50px;
+    max-width:950px;
+    margin:auto;
+    box-shadow:0 15px 40px rgba(0,0,0,0.6);
+}
+
+.booking form{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:35px;
+margin-top:25px;
+}
+.booking input,
+.booking select{
+padding:14px;
+border-radius:10px;
+border:2px solid rgba(255,255,255,0.35);
+font-size:15px;
+background:rgba(255,255,255,0.9);
+transition:0.3s;
+}
+
+.booking button{
+grid-column:1/-1;
+justify-self:center;
+width:220px;
+background:#f4c542;
+border:none;
+padding:16px;
+border-radius:10px;
+font-size:17px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+margin-top:25px;
+}
+
+.booking button:hover{
+    background:#ffda65;
+    transform:scale(1.08);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    text-align:center;
+    padding:40px;
+    font-size:14px;
+    margin-top:50px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Eiffel Stay Inn</h1>
+    <div class="stars">★★★★☆</div>
+    <p>Cozy boutique hotel with elegant city view rooms offering comfort and charm in the heart of the city.</p>
+    <div class="price">₹10,500 / Night</div>
+</header>
+
+<section>
+<h2>Book Your Stay</h2>
+<div class="booking">
+<form onsubmit="event.preventDefault(); goToPayment();">
+    <input type="date" id="checkin" required>
+<input type="date" id="checkout" required>
+
+    <select id="guests" required>
+        <option value="">Guests</option>
+        <option>1 Guest</option>
+        <option>2 Guests</option>
+        <option>3 Guests</option>
+        <option>4 Guests</option>
+    </select>
+
+    <select id="roomType" required>
+        <option value="">Room Type</option>
+        <option>City View Deluxe</option>
+        <option>Premium Suite</option>
+        <option>Family Boutique Room</option>
+    </select>
+
+    <button type="button" onclick="prepareBooking()">
+Proceed to Payment
+</button>
+</form>
+</div>
+</section>
+<section id="paymentSection" style="display:none;">
+<h2>Secure Payment</h2>
+
+<div class="booking">
+
+<div class="summary">
+<p><strong>City:</strong> <span id="city"></span></p>
+<p><strong>Check-in:</strong> <span id="checkinPay"></span></p>
+<p><strong>Check-out:</strong> <span id="checkoutPay"></span></p>
+<p><strong>Guests:</strong> <span id="guestsPay"></span></p>
+<p><strong>Total Amount:</strong> ₹<span id="totalAmount"></span></p>
+</div>
+
+<input id="cardName" type="text" placeholder="Cardholder Name">
+<input id="cardNumber" type="text" placeholder="Card Number">
+
+<div style="display:flex;gap:10px;">
+<input id="expiry" type="text" placeholder="MM/YY">
+<input id="cvv" type="text" placeholder="CVV">
+</div>
+
+<button onclick="processPayment()">Pay Securely</button>
+
+</div>
+</section>
+<section id="successSection" style="display:none;">
+<h2>Booking Status</h2>
+
+<div class="booking" style="text-align:center">
+
+<h3 style="color:#f4c542;font-size:28px;margin-bottom:10px;">
+✔ Booking Confirmed
+</h3>
+
+<p style="margin-bottom:25px;">
+Your stay has been successfully reserved.
+</p>
+
+<a href="hotel_ticket.html"
+style="
+display:inline-block;
+padding:12px 30px;
+background:#f4c542;
+color:black;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;">
+View Booking Ticket
+</a>
+
+</div>
+</section>
+<section>
+<h2>Hotel Gallery</h2>
+<div class="grid">
+    <div class="card"><img src="hotel 3.1.jpg"><h3>Hotel Interior</h3></div>
+    <div class="card"><img src="hotel 3.2.jpg"><h3>Elegant Lobby</h3></div>
+    <div class="card"><img src="hotel 3.3.webp"><h3>City View Room</h3></div>
+    <div class="card"><img src="hotel 3.4.jpg"><h3>Premium Suite</h3></div>
+</div>
+</section>
+
+<section>
+<h2>Hotel Features</h2>
+<div class="grid">
+    <div class="card"><img src="hotel 3.5.webp"><h3>Panoramic City Views</h3><p>Enjoy breathtaking skyline views from private balconies.</p></div>
+    <div class="card"><img src="hotel 3.6.webp"><h3>Cozy Lounge Area</h3><p>Relax in our boutique-style social lounge.</p></div>
+    <div class="card"><img src="hotel 3.7.webp"><h3>High-Speed WiFi</h3><p>Stay connected with complimentary fast internet.</p></div>
+    <div class="card"><img src="hotel 3.8.webp"><h3>24/7 Room Service</h3><p>Luxury comfort anytime you need it.</p></div>
+</div>
+</section>
+
+<section>
+<h2>Signature Menu</h2>
+<div class="grid">
+    <div class="card"><img src="hotel 3.9.webp"><h3>Truffle Cream Pasta</h3><p>₹850</p></div>
+    <div class="card"><img src="hotel 3.10.webp"><h3>Grilled Herb Steak</h3><p>₹1,450</p></div>
+    <div class="card"><img src="hotel 3.11.jpg"><h3>Chocolate Lava Cake</h3><p>₹550</p></div>
+    <div class="card"><img src="hotel 3.12.webp"><h3>Signature Berry Mocktail</h3><p>₹400</p></div>
+</div>
+</section>
+<script>
+function prepareBooking(){
+const checkin = document.getElementById("checkin").value;
+const checkout = document.getElementById("checkout").value;
+
+if(!checkin || !checkout){
+alert("Please select check-in and check-out dates.");
+return;
+}
+
+const checkinDate = new Date(checkin);
+const checkoutDate = new Date(checkout);
+const guests = document.querySelectorAll("select")[0].value;
+const room = document.querySelectorAll("select")[1].value;
+
+if(!checkin || !checkout){
+alert("Please select check-in and check-out dates.");
+return;
+}
+if(checkoutDate <= checkinDate){
+alert("Check-out must be after check-in.");
+return;
+}
+
+const nights = Math.ceil((checkoutDate - checkinDate)/(1000*60*60*24));
+
+const pricePerNight = 10500;
+
+const subtotal = nights * pricePerNight;
+const tax = subtotal * 0.12;
+const total = subtotal + tax;
+
+localStorage.setItem("hotelBookingData", JSON.stringify({
+
+city:"Paris",
+hotelName:"Eiffel Stay Inn",
+
+roomName:room,
+pricePerNight,
+nights,
+subtotal,
+tax,
+total,
+
+checkin,
+checkout,
+guests,
+
+theme:{
+useCustomTheme:true,
+bgGradient:"linear-gradient(135deg,#000000,#1e1e1e)",
+primary:"#f4c542",
+secondary:"#ffd700",
+cardBg:"rgba(255,255,255,0.12)",
+textColor:"#ffffff"
+}
+
+}));
+
+document.getElementById("city").textContent="Paris";
+document.getElementById("checkinPay").textContent=checkin;
+document.getElementById("checkoutPay").textContent=checkout;
+document.getElementById("guestsPay").textContent=guests;
+document.getElementById("totalAmount").textContent=total.toLocaleString();
+
+document.getElementById("paymentSection").style.display="block";
+
+document.getElementById("paymentSection").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+function processPayment(){
+
+const name=document.getElementById("cardName").value.trim();
+const number=document.getElementById("cardNumber").value.trim();
+const expiry=document.getElementById("expiry").value.trim();
+const cvv=document.getElementById("cvv").value.trim();
+
+if(!name||!number||!expiry||!cvv){
+alert("Please fill all payment details.");
+return;
+}
+
+if(number.length<12){
+alert("Invalid card number");
+return;
+}
+
+if(cvv.length!==3){
+alert("Invalid CVV");
+return;
+}
+
+document.getElementById("paymentSection").style.display="none";
+document.getElementById("successSection").style.display="block";
+
+}
+const today = new Date().toISOString().split("T")[0];
+
+document.getElementById("checkin").setAttribute("min", today);
+document.getElementById("checkout").setAttribute("min", today);
+document.getElementById("checkin").addEventListener("change", function(){
+
+const checkinDate = new Date(this.value);
+checkinDate.setDate(checkinDate.getDate() + 1);
+
+const minCheckout = checkinDate.toISOString().split("T")[0];
+
+document.getElementById("checkout").setAttribute("min", minCheckout);
+
+});
+
+</script>
+
+<footer>
+    © 2026 Eiffel Stay Inn | 4-Star Boutique Experience
+</footer>
+
+</body>
+</html>

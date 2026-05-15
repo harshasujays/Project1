@@ -1,0 +1,580 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seine Comfort Hotel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family:'Outfit',sans-serif;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* SPLIT HERO */
+.hero{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    height:100vh;
+}
+
+.hero-left{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:0 10%;
+}
+
+.hero-left h1{
+    font-size:70px;
+    margin-bottom:20px;
+    line-height:1.1;
+}
+
+.hero-left p{
+    font-size:18px;
+    opacity:.85;
+    margin-bottom:30px;
+}
+
+.hero-left button{
+    padding:15px 40px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(45deg,#00f5a0,#00d9f5);
+    font-weight:600;
+    cursor:pointer;
+}
+
+.hero-right{
+    background:url('hotel 2.1.jpeg') center/cover no-repeat;
+}
+
+/* FLOATING GLASS NAV */
+nav{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,0.08);
+    padding:15px 40px;
+    border-radius:50px;
+    display:flex;
+    gap:30px;
+    z-index:100;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+}
+
+section{
+    padding:100px 10%;
+}
+
+h2{
+    font-size:40px;
+    margin-bottom:40px;
+}
+
+/* GLASS CARDS */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    padding:30px;
+    border-radius:25px;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    background:rgba(255,255,255,0.15);
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+.price{
+    color:#00f5a0;
+    font-weight:600;
+}
+
+/* CURVED BOOKING SECTION */
+.booking-section{
+    background:white;
+    color:#1e293b;
+    border-radius:100px 100px 0 0;
+    margin-top:80px;
+    padding:80px 10%;
+}
+
+.booking-box{
+    max-width:600px;
+    margin:auto;
+}
+
+.booking-box input, .booking-box select{
+    width:100%;
+    padding:12px;
+    margin:10px 0 20px;
+    border-radius:10px;
+    border:1px solid #ccc;
+}
+
+.booking-box button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:40px;
+    background:#00d9f5;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    background:#0f2027;
+}
+
+@media(max-width:900px){
+.hero{grid-template-columns:1fr}
+.hero-right{height:400px}
+.hero-left h1{font-size:45px}
+}
+.button-group{
+  margin-top:30px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+/* Secondary Button */
+.secondary-btn{
+  padding:14px;
+  border-radius:12px;
+  border:2px solid #00d9f5;
+  background:transparent;
+  color:#00d9f5;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.secondary-btn:hover{
+  background:#00d9f5;
+  color:white;
+}
+
+/* Primary Button */
+.primary-btn{
+  padding:16px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(45deg,#00f5a0,#00d9f5);
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.primary-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 25px rgba(0,0,0,0.25);
+}
+.booking{
+background:white;
+color:#1e293b;
+padding:30px;
+border-radius:20px;
+margin-top:30px;
+}
+
+.booking input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+.booking button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:40px;
+background:#00d9f5;
+color:white;
+font-weight:600;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="#rooms">Rooms</a>
+<a href="#experience">Experience</a>
+<a href="#booking">Book</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <h1>Seine Comfort Hotel</h1>
+    <p>
+      A futuristic stay beside the Seine River blending glass architecture,
+      skyline reflections, and ultra-modern comfort.
+    </p>
+    <button onclick="document.getElementById('booking').scrollIntoView()">Book Your Escape</button>
+  </div>
+  <div class="hero-right"></div>
+</div>
+
+<section id="rooms">
+<h2>Signature Rooms</h2>
+<div class="grid">
+  <div class="card">
+    <img src="hotel 2.2.jpg">
+    <h3>Urban Glass Room</h3>
+    <p>Floor-to-ceiling windows with river skyline view.</p>
+    <p class="price">₹11,200 / night</p>
+  </div>
+
+  <div class="card">
+    <img src="hotel 2.3.jpg">
+    <h3>Skyline Executive Suite</h3>
+    <p>Smart lighting, lounge space & premium tech features.</p>
+    <p class="price">₹18,500 / night</p>
+  </div>
+
+  <div class="card">
+    <img src="hotel 2.4.jpg">
+    <h3>Panorama Penthouse</h3>
+    <p>Private terrace overlooking the Seine River.</p>
+    <p class="price">₹35,000 / night</p>
+  </div>
+</div>
+</section>
+
+<section id="experience">
+<h2>Luxury Experiences</h2>
+<div class="grid">
+  <div class="card">
+    <img src="hotel 2.5.jpeg">
+    <h3>Riverside Lounge Bar</h3>
+    <p>Signature cocktails with panoramic river views.</p>
+  </div>
+  <div class="card">
+    <img src="hotel 2.6.jpg">
+    <h3>Glass Infinity Pool</h3>
+    <p>Temperature-controlled rooftop pool with skyline reflections.</p>
+  </div>
+  <div class="card">
+    <img src="hotel 2.7.webp">
+    <h3>Wellness & Spa</h3>
+    <p>Premium spa therapies and relaxation suites.</p>
+  </div>
+  <div class="card">
+    <img src="hotel 2.8.png">
+    <h3>Smart Business Hub</h3>
+    <p>Modern workspace with high-speed connectivity.</p>
+  </div>
+</div>
+</section>
+
+<section id="gallery">
+<h2>Hotel Gallery</h2>
+<div class="grid">
+  <div class="card"><img src="hotel2.9.jpg"><h3>Hotel Exterior</h3></div>
+  <div class="card"><img src="hotel 2.10.webp"><h3>Grand Lobby</h3></div>
+  <div class="card"><img src="hotel 2.11.webp"><h3>Fine Dining Area</h3></div>
+  <div class="card"><img src="hotel 2.12.webp"><h3>Rooftop View</h3></div>
+</div>
+</section>
+
+<section id="menu">
+<h2>Signature Menu</h2>
+<div class="grid">
+  <div class="card">
+    <img src="hotel 2.13.jpg">
+    <h3>Seine Special Steak</h3>
+    <p class="price">₹1,800</p>
+  </div>
+  <div class="card">
+    <img src="hotel 2.14.webp">
+    <h3>Grilled Atlantic Salmon</h3>
+    <p class="price">₹1,500</p>
+  </div>
+  <div class="card">
+    <img src="hotel 2.15.webp">
+    <h3>Chocolate Fusion Dessert</h3>
+    <p class="price">₹650</p>
+  </div>
+  <div class="card">
+    <img src="hotel 2.16.webp">
+    <h3>Signature Riverside Cocktail</h3>
+    <p class="price">₹550</p>
+  </div>
+</div>
+</section>
+
+<div class="booking-section" id="booking">
+  <h2 style="text-align:center">Reserve Your Stay</h2>
+  <div class="booking-box">
+
+    <label>Select Room</label>
+    <select id="roomType">
+      <option value="11200">Urban Glass Room - ₹11,200/night</option>
+      <option value="18500">Skyline Executive Suite - ₹18,500/night</option>
+      <option value="35000">Panorama Penthouse - ₹35,000/night</option>
+    </select>
+
+    <label>Check-in</label>
+    <input type="date" id="checkin">
+
+    <label>Check-out</label>
+    <input type="date" id="checkout">
+
+    <label>Guests</label>
+    <select id="guests">
+      <option>1 Guest</option>
+      <option>2 Guests</option>
+      <option>3 Guests</option>
+      <option>4 Guests</option>
+    </select>
+
+    <div id="summaryBox" style="background:#f1f5f9;padding:20px;border-radius:15px;margin-top:20px;display:none">
+      <h3>Booking Summary</h3>
+      <p id="summaryText"></p>
+    </div>
+
+    <div class="button-group">
+  
+  <button class="primary-btn" onclick="prepareBooking()">
+  Proceed to Payment
+</button>
+</div>
+<section id="paymentSection" style="display:none;">
+  <h2>Secure Payment</h2>
+
+  <div class="booking">
+
+    <div class="summary">
+      <p><strong>City:</strong> <span id="city"></span></p>
+     <p><strong>Check-in:</strong> <span id="checkinPay"></span></p>
+<p><strong>Check-out:</strong> <span id="checkoutPay"></span></p>
+<p><strong>Guests:</strong> <span id="guestsPay"></span></p>
+      <p><strong>Total Amount:</strong> ₹<span id="totalAmount"></span></p>
+    </div>
+
+    <input id="cardName" type="text" placeholder="Cardholder Name">
+    <input id="cardNumber" type="text" placeholder="Card Number" maxlength="19">
+
+    <div style="display:flex;gap:10px;">
+      <input id="expiry" type="text" placeholder="MM/YY" maxlength="5">
+      <input id="cvv" type="text" placeholder="CVV" maxlength="3">
+    </div>
+
+    <button onclick="processPayment()">Pay Securely</button>
+
+  </div>
+</section>
+<section id="successSection" style="display:none;">
+  <h2>Booking Status</h2>
+
+  <div class="booking" style="text-align:center">
+
+    <h3 style="color:#00d9f5;font-size:28px;margin-bottom:10px;">
+      ✔ Booking Confirmed
+    </h3>
+
+    <p style="margin-bottom:25px;">
+      Your luxury stay has been successfully reserved.
+    </p>
+
+    <a href="hotel_ticket.html"
+       style="
+        display:inline-block;
+        padding:12px 30px;
+        background:#00d9f5;
+        color:black;
+        border-radius:30px;
+        text-decoration:none;
+        font-weight:600;">
+      View Booking Ticket
+    </a>
+
+  </div>
+
+</section>
+  </div>
+</div>
+</div>
+<script>
+
+function prepareBooking(){
+
+const roomSelect = document.getElementById("roomType");
+const pricePerNight = parseInt(roomSelect.value);
+const roomName = roomSelect.options[roomSelect.selectedIndex].text;
+
+const checkin = document.getElementById("checkin").value;
+const checkout = document.getElementById("checkout").value;
+const guests = document.getElementById("guests").value;
+
+if(!checkin || !checkout){
+alert("Please select check-in and check-out dates.");
+return;
+}
+
+const checkinDate = new Date(checkin);
+const checkoutDate = new Date(checkout);
+
+if(checkoutDate <= checkinDate){
+alert("Check-out must be after check-in.");
+return;
+}
+
+const nights = Math.ceil((checkoutDate - checkinDate)/(1000*60*60*24));
+
+const subtotal = nights * pricePerNight;
+const tax = subtotal * 0.12;
+const total = subtotal + tax;
+
+localStorage.setItem("hotelBookingData", JSON.stringify({
+
+city:"Paris",
+hotelName:"Seine Comfort Hotel",
+
+roomName,
+pricePerNight,
+nights,
+subtotal,
+tax,
+total,
+
+checkin,
+checkout,
+guests,
+
+theme:{
+useCustomTheme:true,
+bgGradient:"linear-gradient(135deg,#0f2027,#203a43,#2c5364)",
+primary:"#00f5a0",
+secondary:"#00d9f5",
+cardBg:"rgba(255,255,255,0.08)",
+textColor:"#ffffff"
+}
+
+}));
+
+document.getElementById("city").textContent="Paris";
+document.getElementById("checkinPay").textContent=checkin;
+document.getElementById("checkoutPay").textContent=checkout;
+document.getElementById("guestsPay").textContent=guests;
+document.getElementById("totalAmount").textContent=total.toLocaleString();
+
+document.getElementById("paymentSection").style.display="block";
+
+document.getElementById("paymentSection").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+  
+
+
+function goToPayment(){
+
+const data = JSON.parse(localStorage.getItem("hotelBookingData"));
+
+if(!data){
+alert("Please check availability first.");
+return;
+}
+
+document.getElementById("city").textContent = data.city;
+document.getElementById("checkinPay").textContent = data.checkin;
+document.getElementById("checkoutPay").textContent = data.checkout;
+document.getElementById("guestsPay").textContent = data.guests;
+document.getElementById("totalAmount").textContent = data.total;
+
+document.getElementById("paymentSection").style.display="block";
+
+document.getElementById("paymentSection").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+function processPayment(){
+
+const name=document.getElementById("cardName").value.trim();
+const number=document.getElementById("cardNumber").value.trim();
+const expiry=document.getElementById("expiry").value.trim();
+const cvv=document.getElementById("cvv").value.trim();
+
+if(!name||!number||!expiry||!cvv){
+alert("Please fill all payment details.");
+return;
+}
+
+if(number.length<12){
+alert("Invalid card number");
+return;
+}
+
+if(cvv.length!==3){
+alert("Invalid CVV");
+return;
+}
+
+document.getElementById("paymentSection").style.display="none";
+document.getElementById("successSection").style.display="block";
+
+
+}
+const expiry = document.getElementById("expiry");
+
+expiry.addEventListener("input", function(e){
+
+let value = e.target.value.replace(/\D/g,"").substring(0,4);
+
+if(value.length >= 3){
+value = value.substring(0,2) + "/" + value.substring(2);
+}
+
+e.target.value = value;
+
+});
+</script>
+
+<footer>
+📍 Seine Riverside, Paris | ☎ +33 333 654 987 | ✉ info@seinecomfort.com
+</footer>
+
+</body>
+</html>

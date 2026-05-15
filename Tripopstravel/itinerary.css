@@ -1,0 +1,178 @@
+
+/* Professional Itinerary Layout */
+/* Professional Gradient Layout */
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    /* Gradient: Dark Blue -> Cyan -> Light Blue -> White */
+    background: linear-gradient(135deg, #abb1c2 0%, #516366 35%, #bae6fd 70%, #ffffff 100%);
+    background-attachment: fixed; /* Keeps the gradient still while scrolling */
+    color: #334155;
+    margin: 0;
+    padding: 40px 0;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 850px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #041f2e;
+    margin-bottom: 40px;
+    font-weight: 800;
+}
+
+.card {
+    background: white;
+    border: 1px solid #bae6fd;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+h4 {
+    color: #041f2e;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* List Item Arrangement */
+li {
+    padding: 16px 20px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 12px;
+    background: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+li:hover {
+    border-color: #38bdf8;
+    background: #f8fafc;
+    transform: translateY(-2px);
+}
+
+li small {
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75em;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+li .delete {
+    color: #94a3b8;
+    font-size: 1.5em;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* Form Layout Fix */
+.custom-form {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.custom-form input, .custom-form select {
+    flex: 1;
+    min-width: 150px;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+}
+
+.custom-form button {
+    background: #041f2e;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* --- THE FIX FOR THE BUTTONS --- */
+
+/* Force style onto any link pointing to trip_dashboard.php */
+a[href*="trip_dashboard.php"], 
+.back-btn {
+    display: inline-block !important;
+    padding: 12px 24px !important;
+    background-color: #ffffff !important;
+    color: #64748b !important;
+    text-decoration: none !important;
+    border: 2px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 0.95em !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+    margin: 10px !important;
+}
+
+a[href*="trip_dashboard.php"]:hover, 
+.back-btn:hover {
+    background-color: #f8fafc !important;
+    border-color: #cbd5e1 !important;
+    color: #0369a1 !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Style for the Download PDF button */
+button[onclick*="downloadPDF"], 
+.pdf-btn {
+    display: inline-block !important;
+    padding: 12px 24px !important;
+    background-color: #041f2e!important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 0.95em !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+    margin: 10px !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+button[onclick*="downloadPDF"]:hover, 
+.pdf-btn:hover {
+    background-color: #0284c7 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.3) !important;
+}
+
+/* Alignment container */
+.back-btn-container, 
+.actions-footer {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid #e0f2fe;
+    text-align: center;
+    width: 100%;
+}

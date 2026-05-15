@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>United Kingdom – Adventure Travel Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #eef1f7, #dde4f0);
+      color: #333;
+      line-height: 1.8;
+    }
+
+    header {
+      height: 70vh;
+      background: linear-gradient(
+        rgba(0,0,0,0.6),
+        rgba(0,0,0,0.6)
+      ),
+      url('https://images.unsplash.com/photo-1505761671935-60b3a7427bad') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: -80px auto 60px;
+      background: #fff;
+      padding: 55px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      animation: fadeUp 1.2s ease;
+    }
+
+    section {
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    section::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #1b3a6b;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    h2 {
+      color: #1b3a6b;
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+    }
+
+    ul {
+      margin-left: 25px;
+      margin-top: 10px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    .activities {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .activity-box {
+      background: linear-gradient(135deg, #e3ebf7, #cfdcf0);
+      padding: 22px;
+      border-radius: 16px;
+      text-align: center;
+      font-weight: 500;
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .activity-box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+      background: #1b3a6b;
+      color: #fff;
+    }
+
+    .locations li {
+      cursor: pointer;
+      margin-bottom: 12px;
+      transition: 0.3s;
+    }
+
+    .locations li:hover {
+      color: #1b3a6b;
+      font-weight: 600;
+    }
+
+    .location-info {
+      display: none;
+      font-size: 0.9rem;
+      margin-top: 5px;
+      color: #555;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 40px;
+      background: #1b3a6b;
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .back:hover {
+      background: #12284a;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes fadeUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @media(max-width:768px){
+      header h1 { font-size: 2.3rem; }
+      .container { padding: 30px; }
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>United Kingdom</h1>
+    <p>Historic Castles, Dramatic Coastlines & Cultural Charm</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <section>
+    <h2>1. Overview</h2>
+    <p>
+      The United Kingdom (UK) is a blend of history, royal heritage,
+      scenic countryside, and vibrant modern cities.
+      It includes England, Scotland, Wales, and Northern Ireland.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Location & Geography</h2>
+    <p>
+      Located in northwestern Europe, the UK is an island nation
+      surrounded by the Atlantic Ocean and North Sea.
+      It features rolling hills, rugged coastlines, lakes, and mountains.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Adventure Activities</h2>
+    <div class="activities">
+      <div class="activity-box">🏞️ Hiking in Scottish Highlands</div>
+      <div class="activity-box">🚴 Cycling in Countryside</div>
+      <div class="activity-box">🏰 Castle Exploring</div>
+      <div class="activity-box">🌊 Coastal Cliff Walks</div>
+      <div class="activity-box">🏄 Surfing in Cornwall</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>4. Famous Tourist & Adventure Locations</h2>
+    <ul class="locations">
+      <li onclick="toggleInfo(this)">
+        <strong>London</strong> – Capital city
+        <div class="location-info">Home to Big Ben, Tower Bridge & Buckingham Palace.</div>
+      </li>
+      <li onclick="toggleInfo(this)">
+        <strong>Edinburgh</strong> – Historic charm
+        <div class="location-info">Famous for Edinburgh Castle and scenic Arthur’s Seat.</div>
+      </li>
+      <li onclick="toggleInfo(this)">
+        <strong>Lake District</strong> – Natural beauty
+        <div class="location-info">Perfect for hiking, boating & peaceful landscapes.</div>
+      </li>
+      <li onclick="toggleInfo(this)">
+        <strong>Stonehenge</strong> – Ancient wonder
+        <div class="location-info">One of the world’s most mysterious prehistoric sites.</div>
+      </li>
+      <li onclick="toggleInfo(this)">
+        <strong>Giant’s Causeway</strong> – Natural formation
+        <div class="location-info">Unique basalt columns along the Northern Ireland coast.</div>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Best Time to Visit</h2>
+    <p>
+      May to September offers pleasant weather.
+      Spring and summer are ideal for countryside and city exploration.
+    </p>
+  </section>
+
+  <section>
+    <h2>6. Estimated Budget</h2>
+    <p>
+      Daily expenses range from ₹9,000 to ₹20,000
+      depending on city and accommodation type.
+    </p>
+  </section>
+
+  <a href="world.html" class="back">← Back to Home</a>
+
+</div>
+
+<footer>
+  © 2026 United Kingdom Adventure Travel Guide
+</footer>
+
+<script>
+  function toggleInfo(element) {
+    const info = element.querySelector(".location-info");
+    info.style.display = info.style.display === "block" ? "none" : "block";
+  }
+</script>
+
+</body>
+</html>

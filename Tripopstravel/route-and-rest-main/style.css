@@ -1,0 +1,1382 @@
+
+.home-button{
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  padding: 10px 22px;
+  background-color: #254e90;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: 0.3s;
+  z-index: 9999;
+}
+
+.home-button:hover{
+  background-color: #1b3b6f;
+  transform: scale(1.05);
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #254e90;
+    background-color:#f6faff ;
+    padding: 10px 20px;
+    border-radius: 8px;
+    
+}
+
+.box {
+  position: relative;
+  width: 100%;
+  height: 96vh;
+  background: linear-gradient(180deg, #f6faff 0%, #ffffff 70%);
+  display: flex;
+  justify-content: center;
+}
+
+.box .group {
+  position: relative;
+  width: 1100px;
+  padding-top: 40px;
+}
+
+/* TITLE */
+.box .ROUTE-REST {
+  font-family: "Radiate Sans Bold";
+  font-size: 88px;
+  color: #254e90;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* SUBTITLE */
+.box .subtitle {
+  text-align: center;
+  font-size: 20px;
+  color: #6b87b5;
+  margin-bottom: 80px;
+}
+
+/* COMMON CARD STYLE */
+.box .travel,
+.box .hotel {
+  position: absolute;
+  top: 260px;
+  width: 360px;
+  height: 390px;
+  background-color: #ffffff;
+  border-radius: 32px;
+  border: 2px solid #2479b2;
+  box-shadow: 0 20px 40px rgba(36, 121, 178, 0.15);
+  transition: all 0.35s ease;
+  cursor: pointer;
+}
+
+/* HOVER EFFECT */
+.box .travel:hover,
+.box .hotel:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 35px 60px rgba(36, 121, 178, 0.25);
+}
+
+/* POSITIONING */
+.box .travel {
+  left: 120px;
+}
+
+.box .hotel {
+  right: 120px;
+}
+
+.travel,
+.hotel {
+  position: absolute;
+  width: 360px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  box-shadow: 0 24px 48px rgba(37, 78, 144, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.box .travel {
+  top: 320px;
+  left: 120px;
+}
+
+.box .hotel {
+  top: 320px;
+  right: 120px;
+}
+.travel img,
+.hotel img {
+  width: 100%;
+  border-radius: 14px;
+  margin-top: 12px;
+}
+.card-title {
+  font-family: Radiate Sans Bold;
+  font-size: 18px;
+  color: #6b85b6; /* muted blue */
+  letter-spacing: 0.5px;
+}
+.travel:hover,
+.hotel:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 32px 64px rgba(37, 78, 144, 0.22);
+}
+
+
+
+/* CTA */
+.box .cta {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 14px 36px;
+  font-size: 18px;
+  background-color: #2479b2;
+  color: white;
+  border-radius: 30px;
+  transition: background 0.3s ease;
+}
+
+.box .cta:hover {
+  background-color: #1c5f8c;
+}
+/* ================= FOOTER ================= */
+.footer {
+    background: #2f5d7c;
+    color: white;
+    padding: 40px 10%;
+    margin-top: 60px;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+.footer h4 {
+    margin-bottom: 10px;
+}
+/* ================= AIRPLANE TRAIL ================= */
+
+.airplane-trail {
+  position: absolute;
+  top: 145px;                 /* below title */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 60px;
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+/* DOTTED TRAIL */
+.airplane-trail .trail {
+  position: absolute;
+  left: 0;
+  top: 28px;
+  width: 260px;
+  height: 2px;
+  background: repeating-linear-gradient(
+    to right,
+    #2479b2,
+    #2479b2 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+
+/* PLANE */
+.airplane-trail .plane {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  font-size: 18px;
+  color: #2479b2;
+  animation: planeTravel 8s linear infinite;
+}
+
+/* PLANE TRAVELS FULL LENGTH */
+@keyframes planeTravel {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(260px);
+    opacity: 0;
+  }
+
+}
+
+/* ================= SEARCH SECTION ================= */
+
+.search-section {
+  max-width: 900px;
+  margin: 50px auto;
+   background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(37, 78, 144, 0.12);
+
+}
+
+.search-section h2 {
+  text-align: center;
+  font-family: Radiate Sans Bold;
+  color: #254e90;
+  margin-bottom: 30px;
+}
+
+/* ================= FORM GRID ================= */
+
+.search-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-family: Radiate Sans Bold;
+  color: #254e90;
+  margin-bottom: 6px;
+}
+
+/* ================= INPUTS ================= */
+
+.search-form input,
+.search-form select {
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #dbe5f1;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.search-form input:focus,
+.search-form select:focus {
+  border-color: #254e90;
+  box-shadow: 0 0 0 2px rgba(37, 78, 144, 0.15);
+}
+
+/* ================= BUTTON ================= */
+
+.search-btn {
+  grid-column: span 2;
+  padding: 16px;
+  border-radius: 12px;
+  background: #254e90;
+  color: white;
+  font-size: 16px;
+  font-family: Radiate Sans Bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search-btn:hover {
+  background: #1c3e73;
+  transform: translateY(-2px);
+}
+/* ================= BLURRED BACKGROUND IMAGE ================= */
+
+.bg-image {
+  position: fixed;
+  inset: 0;
+  background: 
+    linear-gradient(
+      rgba(246, 250, 255, 0.85),
+      rgba(255, 255, 255, 0.9)
+    ),
+    url("bluehotel.png"); /* put your image here */
+  background-size: cover;
+  background-position: center;
+  filter: blur(12px);
+  transform: scale(1.15); /* prevents blur edges */
+  z-index: -1;
+}
+.page-content {
+  position: relative;
+  z-index: 1;
+}
+body {
+  font-family: "Inter", sans-serif;
+  background: #f6f8fc;
+  color: #1a2b4b;
+  line-height: 1.5;
+}
+
+/* Better title scale */
+.title-main {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px;
+  font-weight: 700;
+  color: #0d3883;
+  text-align: center;
+  letter-spacing: -1px;
+  margin-bottom: 0px;   /* tighter */
+}
+
+.title-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #8a98b3;
+  text-align: center;
+  margin-bottom: 0px;  /* reduced gap */
+}
+
+.tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  color: #0d3883;
+  text-align: center;
+  margin-top: 0;        /* remove extra push */
+}
+
+
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+.travel,
+.hotel {
+  cursor: pointer;
+}
+.card-link:hover .hotel,
+.card-link:hover .travel {
+  transform: translateY(-6px);
+}
+
+/* ================= BEST TIME TO BOOK ================= */
+
+.best-time {
+  max-width: 1100px;
+  margin: 80px auto;
+}
+
+.section-title {
+  font-size: 28px;
+  color: var(--primary-blue);
+  margin-bottom: 24px;
+}
+
+.best-time-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(37, 78, 144, 0.12);
+}
+
+/* City Tabs */
+.city-tabs {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid #e5ecf6;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+}
+
+.city-tabs span {
+  font-size: 14px;
+  color: #6b85b6;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.city-tabs .active {
+  color: var(--primary-blue);
+  border-bottom: 2px solid var(--primary-blue);
+  padding-bottom: 10px;
+}
+
+/* Content Layout */
+.best-time-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 24px;
+}
+
+/* Image */
+.city-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+/* Price List */
+.price-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: #f9fbff;
+  color: #3a4a6b;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.price-row:hover {
+  background: #eef4ff;
+}
+
+
+
+/* Note */
+.price-note {
+  font-size: 13px;
+  color: #6b85b6;
+  margin-top: 16px;
+}
+.read-more {
+  margin-top: 14px;
+  background: none;
+  border: none;
+  color: var(--primary-blue);
+  font-size: 14px;
+  cursor: pointer;
+}
+.hotel-card {
+  display: flex;
+  gap: 15px;
+  background: #f4f6fb;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.hotel-img {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.hotel-info h3 {
+  margin: 0;
+}
+
+.hotel-info p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.hotel-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.hotel-price {
+  font-weight: bold;
+  color: #2f5597;
+}
+.hotel-rating {
+  color: #f5b50a;
+  font-size: 18px;
+  margin: 4px 0;
+}
+/* ===== Basic UI ===== */
+.search-box {
+  max-width: 720px;
+  margin: 20px auto 10px;
+  padding: 18px 24px;   
+  border-radius: 24px;
+  background: #ffffff;
+  /* stronger but soft shadow */
+  box-shadow: 0 24px 60px rgba(20, 40, 90, 0.10);
+}
+
+
+.mode-tabs span {
+  margin-right: 15px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #555;
+}
+
+.mode-tabs .active {
+  color: #2f5597;
+  border-bottom: 2px solid #2f5597;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.form-row input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.search-btn {
+  margin-top: 15px;
+  padding: 10px 18px;
+  background: #2f5597;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ===== Ticket Cards ===== */
+.results {
+  max-width: 900px;
+  margin: 25px auto;
+}
+.ticket {
+  background: #f4f6fb;
+  padding: 18px 20px;
+  border-radius: 14px;
+  margin-bottom: 14px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  transition: 0.2s ease;
+}
+
+.ticket:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.ticket-info {
+  flex: 1;              /* keeps left side flexible */
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.ticket-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ticket-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2f5597;
+}
+
+.book-btn {
+  background: #2f5597;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;   /* prevents text breaking */
+}
+.booking-card {
+  background: #ffffff;
+  padding: 32px; 
+  margin: 30px auto;
+  margin-top: 12px;
+  max-width: 720px;
+  border-radius: 24px;
+
+
+  /* soft luxury shadow */
+  box-shadow: 0 10px 30px rgba(20, 40, 90, 0.08);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.booking-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(20, 40, 90, 0.12);
+}
+
+.booking-card input,
+.booking-card select {
+  background: #f7f9ff;
+  border: 1px solid #e2e8f5;
+  width: 100%;
+  padding: 14px 16px;
+  margin-top: 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.booking-card input:focus,
+.booking-card select:focus {
+  outline: none;
+  border-color: #2f5597;
+  box-shadow: 0 0 0 3px rgba(47, 85, 151, 0.12);
+}
+
+
+.ticket-card {
+  border-left: 6px solid #2479b2;
+}
+.booking-card button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 18px;
+
+  background: #2f5597;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+
+  transition: all 0.2s ease;
+}
+
+.booking-card button:hover {
+  background: #24447a;
+  transform: translateY(-1px);
+}
+
+/* ===== Mode Tabs Container ===== */
+.mode-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+/* ===== Individual Mode Card ===== */
+.mode-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 14px 22px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  min-width: 90px;
+}
+
+/* Icon */
+.mode-card .icon {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+/* Label */
+.mode-card .label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Hover effect */
+.mode-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Active tab */
+.mode-card.active {
+  background: #254e90;
+  color: white;
+  box-shadow: 0 8px 16px rgba(37, 78, 144, 0.15);
+  transform: translateY(-1px);
+}
+
+.mode-card.active .label {
+  color: white;
+}
+/* ===== Spinner Overlay ===== */
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  color: white;
+  font-weight: 600;
+}
+
+/* ===== Spinner Circle ===== */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #ffffff55;
+  border-top: 5px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+/* ===== Passenger Counter ===== */
+.passenger-counter {
+  margin-top: 12px;
+}
+
+/* horizontal layout */
+.counter-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+/* number in center */
+.count-number {
+  min-width: 32px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* round buttons */
+.count-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: #254e90;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* hover effect */
+.count-btn:hover {
+  background: #1b3d73;
+  transform: scale(1.05);
+}
+.passenger-counter {
+  margin-bottom: 20px;
+}
+
+#passengerFields {
+  margin-top: 12px;
+}
+
+.passenger-box {
+  margin-top: 12px;
+}
+
+
+
+/* ===== Modern transport icon glow ===== */
+.map-icon-blue {
+  filter: drop-shadow(0 0 6px rgba(37, 78, 144, 0.6));
+}
+
+.map-icon-purple {
+  filter: drop-shadow(0 0 6px rgba(140, 90, 255, 0.6));
+}
+
+.map-icon-green {
+  filter: drop-shadow(0 0 6px rgba(40, 180, 120, 0.6));
+}
+
+.map-icon svg {
+  filter: drop-shadow(0 0 6px rgba(37, 78, 144, 0.4));
+}
+/* ===== Centered bottom map ===== */
+.map-wrapper {
+  display: flex;
+  justify-content: center;   /* center horizontally */
+  margin: 60px 0 30px;       /* space above footer */
+}
+
+.map-section {
+  width: 560px;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 22px;
+
+  box-shadow: 0 18px 40px rgba(20, 40, 90, 0.10);
+}
+
+.map-section h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+
+/* Map box */
+#worldMap {
+  height: 300px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+/* grid layout */
+.trip-grid {
+  display: grid;
+  gap: 20px;
+}
+
+/* card */
+.trip-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+
+  box-shadow: 0 8px 24px rgba(20, 40, 90, 0.08);
+  transition: all 0.25s ease;
+}
+
+.trip-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(20, 40, 90, 0.12);
+}
+
+.trip-card img {
+  height: 180px;
+}
+
+.trip-info {
+  padding: 18px;
+}
+
+.price {
+  font-size: 18px;
+  color: #2f5597;
+}
+
+
+/* button full width */
+.trip-info button {
+  width: 100%;
+}
+/* passenger counter layout */
+.passenger-counter {
+  margin: 20px 0;
+}
+
+.passenger-counter label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* counter box */
+.counter-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  background: #f4f6fb;
+  border-radius: 12px;
+  padding: 10px 16px;
+  width: fit-content;
+}
+
+/* buttons */
+.counter-box button {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: none;
+  background: #254e90;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.counter-box button:hover {
+  background: #1b3a6b;
+}
+
+/* number */
+.counter-box span {
+  font-size: 18px;
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
+}
+.group {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.search-box,
+.booking-card {
+  border-radius: 24px;
+}
+.booking-card input,
+.booking-card select,
+.booking-card button {
+  height: 48px;
+}
+.route-title {
+  font-size: 44px;   /* always smaller than brand */
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+/* ===== Success Overlay ===== */
+.success-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 40, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+  animation: fadeIn 0.4s ease;
+}
+
+/* ===== Card ===== */
+.success-card {
+  background: #ffffff;
+  padding: 40px 36px;
+  border-radius: 24px;
+  text-align: center;
+  width: 360px;
+
+  box-shadow: 0 30px 80px rgba(20, 40, 90, 0.18);
+  animation: slideUp 0.45s ease;
+}
+
+.success-card h2 {
+  margin-top: 18px;
+  font-size: 22px;
+  color: #1a2b4b;
+}
+
+.success-card p {
+  font-size: 14px;
+  color: #6b7a99;
+  margin: 8px 0 22px;
+}
+
+/* ===== Button ===== */
+.success-card button {
+  width: 100%;
+  height: 44px;
+  border: none;
+  border-radius: 12px;
+  background: #2f5597;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.success-card button:hover {
+  background: #24447a;
+}
+
+/* ===== Checkmark Circle ===== */
+.checkmark-circle {
+  width: 72px;
+  height: 72px;
+  margin: auto;
+  border-radius: 50%;
+  background: #eaf1ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SVG animation */
+.checkmark {
+  width: 40px;
+  height: 40px;
+  stroke: #2f5597;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: draw 0.6s ease forwards 0.2s;
+}
+
+/* Animations */
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+/* ===== Modern Ticket Card ===== */
+.ticket-modern {
+  max-width: 520px;
+  margin: 30px auto;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 25px 70px rgba(20, 40, 90, 0.15);
+  animation: fadeInUp 0.4s ease;
+}
+
+/* Header */
+.ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.ticket-header h2 {
+  font-size: 18px;
+  color: #1a2b4b;
+}
+
+.booking-id {
+  background: #eef2ff;
+  color: #2f5597;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* Route section */
+.ticket-route {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 22px 0;
+  padding: 18px;
+  background: #f7f9ff;
+  border-radius: 16px;
+}
+
+.city strong {
+  font-size: 20px;
+  color: #1a2b4b;
+}
+
+.city span {
+  display: block;
+  font-size: 12px;
+  color: #7a869a;
+}
+
+.arrow {
+  font-size: 20px;
+  color: #2f5597;
+}
+
+/* Info grid */
+.ticket-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.ticket-info-grid label {
+  font-size: 11px;
+  color: #7a869a;
+}
+
+.ticket-info-grid p {
+  font-weight: 600;
+  color: #1a2b4b;
+}
+
+/* Passenger list */
+.passenger-list {
+  background: #f9fbff;
+  padding: 16px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+
+/* Button */
+.ticket-modern button {
+  width: 100%;
+  height: 46px;
+  border: none;
+  border-radius: 12px;
+  background: #2f5597;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.ticket-modern button:hover {
+  background: #24447a;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.gender-select {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* hide default radio */
+.gender-chip input {
+  display: none;
+}
+
+/* compact pill look */
+.gender-chip span {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #d6deea;
+  font-size: 13px;
+  color: #2c3e5d;
+  cursor: pointer;
+  background: #f7f9fc;
+  transition: 0.2s ease;
+}
+
+/* hover */
+.gender-chip span:hover {
+  border-color: #254e90;
+}
+
+/* selected state */
+.gender-chip input:checked + span {
+  background: #254e90;
+  color: #fff;
+  border-color: #254e90;
+}
+.passenger-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 18px 0 24px;
+}
+
+/* minus & plus buttons */
+.passenger-counter button {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid #d6deea;
+  background: #f4f7fb;
+  font-size: 20px;
+  font-weight: 600;
+  color: #254e90;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.passenger-counter button:hover {
+  background: #254e90;
+  color: white;
+  border-color: #254e90;
+}
+
+/* number in middle */
+#passengerCount {
+  min-width: 24px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2f4a;
+}
+/* ===== Airport suggestion dropdown ===== */
+.suggestions {
+  position: absolute;
+  background: #ffffff;
+  width: 100%;
+  max-height: 180px;
+  overflow-y: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  margin-top: 6px;
+  z-index: 20;
+  border: 1px solid #e6eaf2;
+}
+
+.suggestion-item {
+  padding: 12px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #2b3a55;
+  transition: background 0.2s ease;
+}
+
+.suggestion-item:hover {
+  background: #f2f6ff;
+}
+.no-flight-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  margin-top: 20px;
+}
+
+.no-flight-card h3 {
+  color: #254e90;
+  margin-bottom: 10px;
+}
+
+.no-flight-card p {
+  color: #6b7a99;
+  margin-bottom: 20px;
+}
+
+.no-flight-card button {
+  background: #254e90;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.flight-name {
+  font-weight: 600;
+  color: #254e90;
+  margin-bottom: 6px;
+}
+
+.time-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #6b7a99;
+  margin: 8px 0;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a2b50;
+  margin: 10px 0;
+}
+/* ===== Fullscreen spinner overlay ===== */
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  backdrop-filter: blur(4px);
+}
+
+/* ===== Circle spinner ===== */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #e3e8f3;
+  border-top: 5px solid #254e90;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-overlay p {
+  font-weight: 600;
+  color: #254e90;
+}
+.field-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #5a6b85;
+  margin: 10px 0 4px;
+}
+.back-btn{
+position:fixed;
+top:20px;
+left:20px;
+padding:10px 18px;
+border:none;
+border-radius:20px;
+background:#1a4264;
+color:white;
+font-weight:600;
+cursor:pointer;
+box-shadow:0 4px 15px rgba(8, 21, 31, 0.581);
+transition:0.3s;
+z-index:999;
+}
+
+.back-btn:hover{
+background:#333;
+transform:translateY(-2px);
+}
+
+
+

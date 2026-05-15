@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Languages of Kerala</title>
+
+<!-- Google Fonts & Font Awesome -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* SCOPED STYLES */
+#languages .hero {
+    height: 40vh;
+    background: url("lang-kerala1.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
+    position: relative;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+#languages .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+}
+
+#languages .hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+#languages .line {
+    width: 5px;
+    height: 60px;
+    background: #2ea7f8;
+    margin-bottom: 15px;
+}
+
+#languages .hero-content h1 {
+    font-size: 42px;
+    font-family: 'Playfair Display', serif;
+}
+
+#languages .hero-content span {
+    color: #2ea7f8;
+}
+
+#languages .container {
+    width: 90%;
+    margin: auto;
+}
+
+#languages .section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+#languages h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #2ea7f8;
+}
+
+#languages .phrase {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f0f4f4;
+    padding: 12px 18px;
+    margin: 10px 0;
+    border-radius: 12px;
+}
+
+#languages .phrase span {
+    font-size: 16px;
+}
+
+#languages .phrase button {
+    border: none;
+    background: #2ea7f8;
+    color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+@media(max-width:768px){
+    #languages .hero-content h1{font-size:28px;}
+    #languages .image-gallery img{width:100%;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="languages">
+
+    <div class="hero">
+        <div class="hero-content">
+            <div class="line"></div>
+            <h1>Languages <span>of Kerala</span></h1>
+            <p>Essential communication guide for visitors</p>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Malayalam -->
+        <div class="section">
+            <h2>Malayalam (Official Language)</h2>
+
+            <div class="phrase">
+                <span>Hello: Namaskaram (നമസ്കാരം)</span>
+                <button onclick="speak('നമസ്കാരം','ml-IN')"><i class="fa-solid fa-play"></i></button>
+            </div>
+
+            <div class="phrase">
+                <span>Thank You: Nanni (നന്ദി)</span>
+                <button onclick="speak('നന്ദി','ml-IN')"><i class="fa-solid fa-play"></i></button>
+            </div>
+
+            <div class="phrase">
+                <span>How are you?: Sukhamano? (സുഖമാണോ?)</span>
+                <button onclick="speak('സുഖമാണോ?','ml-IN')"><i class="fa-solid fa-play"></i></button>
+            </div>
+
+            <div class="phrase">
+                <span>How much?: Ethra? (എത്ര?)</span>
+                <button onclick="speak('എത്ര?','ml-IN')"><i class="fa-solid fa-play"></i></button>
+            </div>
+
+            <div class="phrase">
+                <span>Yes: Aam (ആം)</span>
+                <button onclick="speak('ആം','ml-IN')"><i class="fa-solid fa-play"></i></button>
+            </div>
+
+            <div class="phrase">
+                <span>No: Illa (ഇല്ല)</span>
+                <button onclick="speak('ഇല്ല','ml-IN')"><i class="fa-solid fa-play"></i></button>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<script>
+let voices = [];
+
+function populateVoices() {
+    voices = window.speechSynthesis.getVoices();
+}
+
+window.speechSynthesis.onvoiceschanged = populateVoices;
+
+function speak(text, langCode) {
+    const speech = new SpeechSynthesisUtterance(text);
+
+    const voice = voices.find(v => v.lang === langCode) ||
+                  voices.find(v => v.lang.startsWith(langCode)) ||
+                  voices.find(v => v.lang.startsWith('en'));
+
+    if (voice) speech.voice = voice;
+
+    speech.rate = 0.9;
+    window.speechSynthesis.speak(speech);
+}
+</script>
+
+</body>
+</html>

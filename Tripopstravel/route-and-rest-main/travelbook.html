@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VoyageOps</title>
+<!-- Leaflet Map CSS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
+/>
+
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="global.css">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+
+
+<div class="page-content">
+<button class="back-btn" onclick="window.location.href='booking-page.html'">
+← Back
+</button>
+<div class="group">
+  <div class="title-main">VoyageOps</div><br>
+  <div class="title-sub">by TripOps</div><br>
+</div>
+
+<p class="tagline">Where every voyage begins smoothly.</p>
+
+  
+
+<!-- ================= SEARCH ================= -->
+<div class="search-box">
+
+  <div class="mode-tabs" id="modeTabs">
+  <div class="mode-card active" data-mode="flight">
+    <div class="icon">✈️</div>
+    <div class="label">Flights</div>
+  </div>
+
+  <div class="mode-card" data-mode="train">
+    <div class="icon">🚆</div>
+    <div class="label">Trains</div>
+  </div>
+
+  <div class="mode-card" data-mode="bus">
+    <div class="icon">🚌</div>
+    <div class="label">Buses</div>
+  </div>
+
+  <div class="mode-card" data-mode="cab">
+    <div class="icon">🚕</div>
+    <div class="label">Cabs</div>
+  </div>
+</div>
+
+
+  
+</div>
+<!-- ===== Booking Sections ===== -->
+
+<div id="bookingSection"></div>
+
+<!-- ===== Ticket Output ===== -->
+<div id="ticketOutput"></div>
+
+
+
+<!-- ================= RESULTS ================= -->
+<div class="results" id="results"></div>
+
+
+<!-- ===== Centered Bottom Map ===== -->
+<div class="map-wrapper">
+  <div class="map-section">
+    <h2>Explore Global Travel Hubs</h2>
+    <div id="worldMap"></div>
+  </div>
+</div>
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div><h4>TripOps</h4><p>Your ultimate travel partner.</p></div>
+    <div><h4>Company</h4><p>About Us<br>Careers</p></div>
+    <div><h4>Support</h4><p>Help Center<br>Contact</p></div>
+    <div><h4>Follow Us</h4><p>Instagram<br>Twitter</p></div>
+  </div>
+</footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- Leaflet JS FIRST -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+<!-- THEN your script -->
+<script>
+
+  let bookingData = {};
+
+  document.addEventListener("DOMContentLoaded", () => {
+    /* ===== Initialize World Map ===== */
+const map = L.map("worldMap").setView([20, 0], 2);
+setTimeout(() => {
+  map.invalidateSize();
+}, 200);
+
+
+/* ===== Blue-themed map tiles ===== */
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: "© OpenStreetMap",
+}).addTo(map);
+/* ===== Clean modern SVG icons ===== */
+
+const airportIcon = L.divIcon({
+  html: `
+    <svg width="22" height="22" viewBox="0 0 16 16" fill="#254e90">
+      <path d="M6.428 1.151C6.995.513 8.005.513 8.572 1.15L9.5 2.2V6l5 2v1l-5-1v3.5l1.5 1V14l-3-1-3 1v-1.5l1.5-1V8l-5 1V8l5-2V2.2l.928-1.05z"/>
+    </svg>
+  `,
+  className: "map-icon",
+  iconSize: [22, 22],
+});
+
+const trainIcon = L.divIcon({
+  html: `
+    <svg width="22" height="22" viewBox="0 0 16 16" fill="#8c5aff">
+      <path d="M3 1a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2l-1 2h2l1-2h6l1 2h2l-1-2a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H3zm0 2h10v6H3V3zm2 1v2h2V4H5zm4 0v2h2V4H9z"/>
+    </svg>
+  `,
+  className: "map-icon",
+  iconSize: [22, 22],
+});
+
+const busIcon = L.divIcon({
+  html: `
+    <svg width="22" height="22" viewBox="0 0 16 16" fill="#28b478">
+      <path d="M2 1a1 1 0 0 0-1 1v9a2 2 0 0 0 2 2h1l-1 2h2l1-2h4l1 2h2l-1-2h1a2 2 0 0 0 2-2V2a1 1 0 0 0-1-1H2zm1 3h10v5H3V4zm1 1v2h2V5H4zm6 0v2h2V5h-2z"/>
+    </svg>
+  `,
+  className: "map-icon",
+  iconSize: [22, 22],
+});
+
+
+
+// ===== Load real transport hubs in visible map area =====
+const overpassUrl = "https://overpass-api.de/api/interpreter";
+
+let clusterLayer; // store cluster globally
+
+function loadTransportHubs() {
+  const bounds = map.getBounds();
+
+  const query = `
+    [out:json][timeout:25];
+    (
+      node["aeroway"="aerodrome"](${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()});
+      node["railway"="station"](${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()});
+      node["highway"="bus_stop"](${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()});
+    );
+    out;
+  `;
+
+  fetch("https://overpass-api.de/api/interpreter", {
+    method: "POST",
+    body: query
+  })
+    .then(res => res.json())
+    .then(data => {
+
+      // remove old markers before adding new
+      if (clusterLayer) {
+        map.removeLayer(clusterLayer);
+      }
+
+      clusterLayer = L.markerClusterGroup();
+
+      data.elements.forEach(el => {
+        const marker = L.marker([el.lat, el.lon]);
+        clusterLayer.addLayer(marker);
+      });
+
+      map.addLayer(clusterLayer);
+    })
+    .catch(err => console.error("Overpass error:", err));
+}
+
+/* Load when map moves */
+map.on("moveend", loadTransportHubs);
+
+// Initial load
+loadTransportHubs();
+
+
+let currentMode = "flight";
+
+const modeTabs = document.querySelectorAll(".mode-card");
+
+const bookingSection = document.getElementById("bookingSection");
+const ticketOutput = document.getElementById("ticketOutput");
+
+/* ========= Mode Switch ========= */
+modeTabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    modeTabs.forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+
+    currentMode = tab.dataset.mode;
+    showBookingForm(currentMode);
+    ticketOutput.innerHTML = "";
+  });
+});
+let passengerCount = 1;
+
+/* Create passenger input fields */
+function renderPassengerFields() {
+  const container = document.getElementById("passengerFields");
+  container.innerHTML = "";
+
+  for (let i = 1; i <= passengerCount; i++) {
+    container.innerHTML += `
+      <div class="passenger-box">
+        <h4>Passenger ${i}</h4>
+        <input type="text" placeholder="Full Name" class="pname">
+        <label class="field-label">Date of Birth</label>
+<input type="date" class="pdob">
+
+        <div class="gender-select">
+  <label class="gender-chip">
+    <input type="radio" name="gender${i}" value="Female">
+    <span>Female</span>
+  </label>
+
+  <label class="gender-chip">
+    <input type="radio" name="gender${i}" value="Male">
+    <span>Male</span>
+  </label>
+
+  <label class="gender-chip">
+    <input type="radio" name="gender${i}" value="Other">
+    <span>Other</span>
+  </label>
+</div>
+
+
+      </div>
+    `;
+  }
+}
+
+/* Increase / decrease passengers */
+window.changePassengers = function (change) {
+  passengerCount += change;
+
+  if (passengerCount < 1) passengerCount = 1;
+  if (passengerCount > 6) passengerCount = 6; // limit for demo
+
+  document.getElementById("passengerCount").innerText = passengerCount;
+  renderPassengerFields();
+};
+
+
+
+
+/* ========= Show Booking Form ========= */
+window.showBookingForm = function (mode) {
+
+  let extraField = "";
+
+  if (mode === "flight") {
+    extraField = `<label>Class</label>
+                  <select id="class">
+                    <option>Economy</option>
+                    <option>Business</option>
+                  </select>`;
+  }
+
+  if (mode === "train") {
+    extraField = `<label>Coach</label>
+                  <select id="class">
+                    <option>Sleeper</option>
+                    <option>3AC</option>
+                    <option>2AC</option>
+                  </select>`;
+  }
+
+  if (mode === "bus") {
+    extraField = `<label>Seat Type</label>
+                  <select id="class">
+                    <option>Seater</option>
+                    <option>Sleeper</option>
+                  </select>`;
+  }
+
+  if (mode === "cab") {
+    extraField = `<label>Car Type</label>
+                  <select id="class">
+                    <option>Mini</option>
+                    <option>Sedan</option>
+                    <option>SUV</option>
+                  </select>`;
+  }
+
+  bookingSection.innerHTML = `
+    <div class="booking-card">
+      <h3>${mode.toUpperCase()} Booking</h3>
+
+      <!-- FROM -->
+      <input type="text" id="from" placeholder="From city"
+        ${mode === "flight" ? 'oninput="searchAirports(this, \'fromList\')"' : ""}>
+      ${mode === "flight" ? '<div id="fromList" class="suggestions"></div>' : ""}
+
+      <!-- TO -->
+      <input type="text" id="to" placeholder="To city"
+        ${mode === "flight" ? 'oninput="searchAirports(this, \'toList\')"' : ""}>
+      ${mode === "flight" ? '<div id="toList" class="suggestions"></div>' : ""}
+
+      <input type="date" id="date">
+
+      ${extraField}
+
+      <!-- Dynamic search button -->
+      <button onclick="searchTrips('${mode}')">
+        Search ${mode.charAt(0).toUpperCase() + mode.slice(1)}
+      </button>
+    </div>
+  `;
+};
+
+const mockTrips = {
+  train: [
+    {
+      name: "Rajdhani Express",
+      number: "TR101",
+      dep: "06:30",
+      arr: "12:45",
+      price: 1850,
+      img: "train1.jpg"
+    },
+    {
+      name: "Shatabdi Express",
+      number: "TR202",
+      dep: "08:00",
+      arr: "13:10",
+      price: 1450,
+      img: "train2.jpg"
+    }
+  ],
+
+  bus: [
+    {
+      name: "KSRTC Volvo",
+      number: "BS11",
+      dep: "21:00",
+      arr: "05:30",
+      price: 950,
+      img: "bus1.jpg"
+    },
+    {
+      name: "Kallada Travels",
+      number: "BS22",
+      dep: "22:30",
+      arr: "06:15",
+      price: 1200,
+      img: "bus2.jpg"
+    }
+  ],
+
+  cab: [
+    {
+      name: "Mini Cab",
+      number: "CB1",
+      dep: "Anytime",
+      arr: "Direct",
+      price: 2500,
+      img: "cab1.jpg"
+    },
+    {
+      name: "SUV Cab",
+      number: "CB2",
+      dep: "Anytime",
+      arr: "Direct",
+      price: 4200,
+      img: "cab2.jpg"
+    }
+  ]
+};
+
+
+window.searchTrips = async function (mode) {
+
+  const from = document.getElementById("from").value.toUpperCase();
+  const to = document.getElementById("to").value.toUpperCase();
+  const date = document.getElementById("date").value;
+  const type = document.getElementById("class").value;
+
+  if (!from || !to || !date) {
+    alert("Please fill travel details");
+    return;
+  }
+
+  bookingData = { mode, from, to, date, type };
+
+  /* =========================================================
+     ✈️ FLIGHT → REAL AMADEUS API
+  ========================================================= */
+  if (mode === "flight") {
+    const spinner = document.getElementById("flightSpinner");
+    spinner.style.display = "flex";
+
+    try {
+      const res = await fetch(
+        `http://localhost:3000/flights?from=${from}&to=${to}&date=${date}`
+      );
+
+      const data = await res.json();
+      spinner.style.display = "none";
+
+      console.log("FLIGHT API DATA:", data);
+
+      if (!data.data || data.data.length === 0) {
+        bookingSection.innerHTML = `
+          <div class="no-flight-card">
+            <h3>✈️ No Flights Available</h3>
+            <p>We couldn’t find flights for the selected route and date.</p>
+            <button onclick="showBookingForm('flight')">Try Another Search</button>
+          </div>
+        `;
+        return;
+      }
+
+      bookingSection.innerHTML = `
+        <div class="booking-card">
+          <h3>Available Flights</h3>
+          <div class="trip-grid">
+
+            ${data.data.map((flight) => {
+
+              const seg = flight.itineraries[0].segments[0];
+
+              const depTime = seg.departure.at.slice(11, 16);
+              const arrTime = seg.arrival.at.slice(11, 16);
+              const flightName = `${seg.carrierCode} ${seg.number}`;
+
+              const realPrice = Number(flight.price.total) * 80;
+              const price = Math.round(realPrice).toLocaleString("en-IN");
+
+              return `
+                <div class="trip-card">
+                  <div class="trip-info">
+
+                    <h4>${seg.departure.iataCode} → ${seg.arrival.iataCode}</h4>
+
+                    <p class="flight-name">✈ ${flightName}</p>
+
+                    <div class="time-row">
+                      <span>🛫 ${depTime}</span>
+                      <span>🛬 ${arrTime}</span>
+                    </div>
+
+                    <p class="price">₹ ${price}</p>
+
+                    <button onclick="openPassengerForm('${flightName}', ${realPrice})">
+                      Book
+                    </button>
+
+                  </div>
+                </div>
+              `;
+            }).join("")}
+
+          </div>
+        </div>
+      `;
+
+    } catch (err) {
+      spinner.style.display = "none";
+      console.error(err);
+      alert("Failed to fetch flights ❌");
+    }
+
+    return; // ⭐ IMPORTANT → stop here so mock data won't run
+  }
+
+  /* =========================================================
+     🚆🚌🚕 TRAIN / BUS / CAB → MOCK DATA
+  ========================================================= */
+
+  const trips = mockTrips[mode];
+
+  bookingSection.innerHTML = `
+    <div class="booking-card">
+      <h3>Available ${mode.toUpperCase()}s</h3>
+
+      <div class="trip-grid">
+        ${trips.map(t => `
+          <div class="trip-card">
+
+            <img src="${t.img}" class="trip-img" />
+
+            <div class="trip-info">
+
+              <h4>${from} → ${to}</h4>
+
+              <p class="trip-name">${t.name} (${t.number})</p>
+
+              <div class="time-row">
+                <span>🕒 ${t.dep}</span>
+                <span>🕒 ${t.arr}</span>
+              </div>
+
+              <p class="price">₹ ${t.price.toLocaleString("en-IN")}</p>
+
+              <button onclick="openPassengerForm('${t.name} ${t.number}', ${t.price})">
+                Book
+              </button>
+
+            </div>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `;
+};
+
+
+
+function displayFlights(flights) {
+  bookingSection.innerHTML = `
+    <div class="booking-card">
+      <h3>Available Flights</h3>
+      <div id="flightList"></div>
+    </div>
+  `;
+
+  const container = document.getElementById("flightList");
+
+  flights.forEach(flight => {
+    const segment = flight.itineraries[0].segments[0];
+
+    const card = document.createElement("div");
+    card.style.background = "#111";
+    card.style.color = "white";
+    card.style.padding = "15px";
+    card.style.marginBottom = "10px";
+    card.style.borderRadius = "10px";
+
+    card.innerHTML = `
+      <h4>${segment.departure.iataCode} → ${segment.arrival.iataCode}</h4>
+      <p>Airline: ${segment.carrierCode}</p>
+      <p>Departure: ${segment.departure.at}</p>
+      <p>Arrival: ${segment.arrival.at}</p>
+      <p>Seats left: ${flight.numberOfBookableSeats}</p>
+      <button onclick="openPassengerForm('${segment.carrierCode} ${segment.number}', 2000)">
+        Select Flight
+      </button>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+
+window.openPassengerForm = function(tripName, price) {
+
+  bookingData.tripName = tripName;
+  bookingData.flightNumber = tripName.split(" ").pop(); // simple demo number
+  bookingData.price = price;
+
+  passengerCount = 1;
+
+  bookingSection.innerHTML = `
+    <div class="booking-card">
+      <h3>Passenger Details</h3>
+
+      <div class="passenger-counter">
+  <button onclick="changePassengers(-1)">−</button>
+  <span id="passengerCount">1</span>
+  <button onclick="changePassengers(1)">+</button>
+</div>
+
+
+      <div id="passengerFields"></div>
+
+      <button onclick="goToPayment()">
+
+        Proceed to Payment
+      </button>
+    </div>
+  `;
+
+  renderPassengerFields();
+};
+
+
+/* ========= Generate Ticket ========= */
+window.generateTicket = function() {
+
+  const { mode, from, to, date, type, passengers, tripName, flightNumber } = bookingData;
+
+
+  const bookingId = Math.floor(Math.random() * 100000);
+
+  let passengerHTML = passengers
+    .map(
+      (p, i) =>
+        `<p><strong>P${i + 1}:</strong> ${p.name} | ${p.age} | ${p.gender}</p>`
+    )
+    .join("");
+
+ ticketOutput.innerHTML = `
+  <div class="ticket-modern" id="ticketCard">
+
+    <div class="ticket-header">
+      <h2>${mode.toUpperCase()} TICKET</h2>
+      <span class="booking-id">#${bookingId}</span>
+    </div>
+
+    <div class="ticket-route">
+      <div class="city">
+        <strong>${from}</strong>
+        <span>From</span>
+      </div>
+
+      <div class="arrow">-></div>
+
+      <div class="city">
+        <strong>${to}</strong>
+        <span>To</span>
+      </div>
+    </div>
+
+    <div class="ticket-info-grid">
+      <div><label>Date</label><p>${date}</p></div>
+      <div><label>Class</label><p>${type}</p></div>
+      <div><label>${mode}</label><p>${tripName}</p></div>
+      <div><label>No.</label><p>${flightNumber}</p></div>
+    </div>
+
+    <div class="passenger-list">
+      ${passengerHTML}
+    </div>
+
+    <button onclick="downloadPDF()">Download PDF</button>
+  </div>
+`;
+
+};
+
+
+window.downloadPDF = function () {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  const { mode, from, to, date, type, passengers, tripName } = bookingData;
+
+  const bookingId = bookingData.bookingId || Math.floor(Math.random() * 100000);
+  bookingData.bookingId = bookingId;
+
+  const qrText = `TripOps Booking ID: ${bookingId}`;
+
+  /* ===== HEADER BAR ===== */
+  doc.setFillColor(37, 78, 144);
+  doc.rect(0, 0, 210, 40, "F");
+
+  doc.setTextColor(255, 255, 255);
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(22);
+  doc.text("TripOps", 20, 25);
+
+  doc.setFontSize(12);
+  doc.text(`${mode.toUpperCase()} TICKET`, 20, 33);
+
+  /* ===== BOARDING PASS CARD ===== */
+  doc.setFillColor(245, 247, 252);
+  doc.roundedRect(10, 50, 190, 170, 10, 10, "F");
+
+  doc.setTextColor(0, 0, 0);
+
+  /* ===== ROUTE BIG TEXT ===== */
+  doc.setFontSize(26);
+  doc.setFont("helvetica", "bold");
+  doc.text(from, 25, 80);
+ doc.text("->", 100, 80);
+  doc.text(to, 120, 80);
+
+  /* ===== PASSENGERS ===== */
+  doc.setFontSize(12);
+  doc.setFont("helvetica", "normal");
+
+  let y = 100;
+  passengers.forEach((p, i) => {
+    doc.text(`P${i + 1}: ${p.name} | Age ${p.age} | ${p.gender}`, 25, y);
+    y += 10;
+  });
+
+  /* ===== TRIP DETAILS ===== */
+  y += 10;
+
+  doc.text(`Trip : ${tripName}`, 25, y);
+  doc.text(`Date : ${date}`, 25, y + 12);
+  doc.text(`Class : ${type}`, 25, y + 24);
+  doc.text(`Booking ID : #${bookingId}`, 25, y + 36);
+
+  /* ===== QR CODE ===== */
+  const qrDiv = document.createElement("div");
+  new QRCode(qrDiv, { text: qrText, width: 100, height: 100 });
+
+  setTimeout(() => {
+    const qrCanvas = qrDiv.querySelector("canvas");
+    const qrDataURL = qrCanvas.toDataURL("image/png");
+
+    doc.addImage(qrDataURL, "PNG", 135, 110, 50, 50);
+
+    /* ===== FOOTER STRIP ===== */
+    doc.setFillColor(37, 78, 144);
+    doc.rect(0, 270, 210, 25, "F");
+
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(11);
+    doc.text(
+      "Thank you for choosing TripOps. Have a pleasant journey.",
+      20,
+      285
+    );
+
+    doc.save("TripOps-ticket.pdf");
+  }, 300);
+};
+
+
+
+
+
+
+/* show default */
+showBookingForm("flight");
+
+});
+
+window.goToPayment = function () {
+
+  const names = document.querySelectorAll(".pname");
+  const dobs  = document.querySelectorAll(".pdob");
+
+  let passengers = [];
+
+  for (let i = 0; i < names.length; i++) {
+
+    const selectedGender = document.querySelector(
+      `input[name="gender${i + 1}"]:checked`
+    );
+
+    if (!names[i].value || !dobs[i].value || !selectedGender) {
+      alert("Please fill all passenger details");
+      return;
+    }
+
+    passengers.push({
+      name: names[i].value,
+      dob: dobs[i].value,
+      gender: selectedGender.value
+    });
+  }
+
+  bookingData.passengers = passengers;
+
+  /* ===== Payment UI ===== */
+  bookingSection.innerHTML = `
+    <div class="booking-card">
+      <h3>Payment</h3>
+
+      <input type="text" placeholder="Card Number">
+      <input type="text" placeholder="Card Holder Name">
+
+      <div style="display:flex; gap:10px;">
+        <input type="text" id="expiry" placeholder="MM/YY" maxlength="5">
+        <input type="text" placeholder="CVV">
+        <input type="tel" id="phone" placeholder="Phone Number" maxlength="10">
+      </div>
+
+      <button onclick="paymentSuccess()">Pay Now</button>
+    </div>
+  `;
+
+  /* expiry auto slash */
+  const expiryInput = document.getElementById("expiry");
+
+  expiryInput.addEventListener("input", (e) => {
+    let value = e.target.value.replace(/\D/g, "");
+
+    if (value.length > 2) {
+      value = value.slice(0, 2) + "/" + value.slice(2, 4);
+    }
+
+    e.target.value = value;
+  });
+};
+
+
+window.paymentSuccess = function () {
+  const spinner = document.getElementById("loadingSpinner");
+  const phoneInput = document.getElementById("phone");
+
+  // basic validation
+  if (!phoneInput.value || phoneInput.value.length < 10) {
+    alert("Please enter a valid phone number");
+    return;
+  }
+
+  bookingData.phone = "+91 " + phoneInput.value;
+
+  spinner.style.display = "flex";
+
+  setTimeout(() => {
+    spinner.style.display = "none";
+
+    // Professional simulated SMS message
+    const msg = document.getElementById("successMsg");
+if (msg) {
+  msg.innerHTML = `
+    Ticket details sent to <strong>${bookingData.phone}</strong><br>
+    <span style="font-size:12px;color:#7a869a;">
+      SMS service simulated for demo environment.
+    </span>
+  `;
+}
+    document.getElementById("successScreen").style.display = "flex";
+  }, 1800);
+};
+// ===== Show ticket after success =====
+window.showTicket = function () {
+  document.getElementById("successScreen").style.display = "none";
+
+  // save ticket data
+  localStorage.setItem("tripops_ticket", JSON.stringify(bookingData));
+
+  // generate visual ticket
+  generateTicket();
+};
+
+  
+</script>
+
+
+<!-- Loading Spinner -->
+ <div id="loadingSpinner" class="spinner-overlay" style="display:none;">
+  <div class="spinner"></div>
+  <p>Processing payment...</p>
+</div>
+<!-- ===== Payment Success Screen ===== -->
+<div id="successScreen" class="success-overlay" style="display:none;">
+  <div class="success-card">
+
+    <div class="checkmark-circle">
+      <svg viewBox="0 0 52 52" class="checkmark">
+        <circle cx="26" cy="26" r="24" fill="none"/>
+        <path d="M14 27l7 7 16-16" fill="none"/>
+      </svg>
+    </div>
+
+    <h2>Booking Confirmed</h2>
+    <p>Your journey has been successfully reserved.</p>
+
+    <button onclick="showTicket()">View Ticket</button>
+  </div>
+</div>
+<!-- ===== Success Screen ===== -->
+<div id="successScreen" style="display:none;">
+  <p id="successMsg"></p>
+</div>
+
+
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+<script>
+function goToFlightSearch() {
+  const from = document.getElementById("from").value;
+  const to = document.getElementById("to").value;
+  const date = document.getElementById("date").value;
+
+  if (!from || !to || !date) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  // store search data
+  bookingData = {
+    mode: "flight",
+    from,
+    to,
+    date,
+    type: document.getElementById("class").value
+  };
+
+  // directly show flight results in SAME PAGE
+  searchTrips("flight");
+}
+async function searchAirports(input, listId) {
+  const keyword = input.value;
+  if (keyword.length < 2) return;
+
+  const res = await fetch(`http://localhost:3000/airports?keyword=${keyword}`);
+  const data = await res.json();
+
+  const list = document.getElementById(listId);
+  list.innerHTML = "";
+
+  data.forEach(loc => {
+    list.innerHTML += `
+      <div class="suggestion-item"
+           onclick="selectAirport('${loc.iataCode}','${listId}')">
+        ${loc.name} (${loc.iataCode})
+      </div>
+    `;
+  });
+}
+
+function selectAirport(code, listId) {
+  document.querySelector(`#${listId}`).previousElementSibling.value = code;
+  document.getElementById(listId).innerHTML = "";
+}
+
+
+
+</script>
+<!-- ===== Flight Search Loading Spinner ===== -->
+<div id="flightSpinner" class="spinner-overlay" style="display:none;">
+  <div class="spinner"></div>
+  <p>Searching flights...</p>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunset Lagoon Resort | Bali</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:Poppins,sans-serif;
+background:linear-gradient(180deg,#ffe0b2,#fff);
+color:#333;
+}
+
+/* HERO */
+
+.hero{
+height:420px;
+background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),
+url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e") center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:50px;
+}
+
+.stars{
+background:#ff7043;
+padding:8px 18px;
+border-radius:25px;
+margin-top:10px;
+display:inline-block;
+font-weight:700;
+}
+
+/* SECTION */
+
+.section{
+padding:60px 10%;
+}
+
+.section h2{
+font-family:'Playfair Display',serif;
+margin-bottom:30px;
+color:#ff7043;
+}
+
+/* ROOM CARDS */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.card{
+background:rgba(255,255,255,.8);
+backdrop-filter:blur(10px);
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.price{
+color:#00897b;
+font-weight:600;
+}
+
+/* BOOKING */
+
+.booking{
+background:#00897b;
+color:white;
+padding:40px;
+border-radius:25px;
+max-width:520px;
+margin:auto;
+box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+
+.booking input,
+.booking select{
+width:100%;
+padding:12px;
+margin:10px 0 18px;
+border-radius:10px;
+border:none;
+}
+
+.booking button{
+width:100%;
+padding:14px;
+background:#ff7043;
+border:none;
+border-radius:30px;
+font-weight:700;
+cursor:pointer;
+}
+
+.booking button:hover{
+background:#f4511e;
+}
+
+/* PAYMENT */
+
+.payment{
+display:none;
+margin-top:40px;
+}
+
+.card-ui{
+background:white;
+padding:30px;
+border-radius:20px;
+max-width:450px;
+margin:auto;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.card-ui label{
+font-size:14px;
+font-weight:600;
+}
+
+.card-ui input{
+width:100%;
+padding:10px;
+margin-top:6px;
+margin-bottom:15px;
+border-radius:8px;
+border:1px solid #ddd;
+}
+
+.pay-btn{
+background:#00897b;
+color:white;
+border:none;
+padding:12px;
+border-radius:20px;
+cursor:pointer;
+width:100%;
+font-weight:600;
+}
+
+/* SUCCESS */
+
+.success{
+display:none;
+text-align:center;
+margin-top:40px;
+}
+
+.success h3{
+color:#00897b;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<div class="hero">
+<div>
+<h1>Sunset Lagoon Resort</h1>
+<div class="stars">★★★★★</div>
+<p>Tropical luxury in Bali</p>
+</div>
+</div>
+
+<!-- ROOMS -->
+
+<section class="section">
+
+<h2>Villas & Suites</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1566073771259-6a8506099945">
+<div class="card-content">
+<h3>Lagoon View Room</h3>
+<p>Private balcony overlooking the lagoon.</p>
+<p class="price">₹8,500 / night</p>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d">
+<div class="card-content">
+<h3>Beachfront Villa</h3>
+<p>Steps away from Bali’s white sand beaches.</p>
+<p class="price">₹14,000 / night</p>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b">
+<div class="card-content">
+<h3>Private Pool Villa</h3>
+<p>Luxury villa with personal infinity pool.</p>
+<p class="price">₹18,000 / night</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- BOOKING -->
+
+<section class="section">
+
+<h2>Reserve Your Stay</h2>
+
+<div class="booking">
+
+<input type="text" id="name" placeholder="Full Name">
+<input type="email" id="email" placeholder="Email Address">
+
+<label>Check-in</label>
+<input type="date" id="checkin">
+
+<label>Check-out</label>
+<input type="date" id="checkout">
+
+<select id="roomType">
+<option value="">Select Room</option>
+<option value="8500">Lagoon View Room</option>
+<option value="14000">Beachfront Villa</option>
+<option value="18000">Private Pool Villa</option>
+</select>
+
+<button onclick="prepareBooking()">Proceed to Payment</button>
+
+</div>
+
+</section>
+
+<!-- PAYMENT -->
+
+<section class="section payment" id="paymentSection">
+
+<h2 style="text-align:center">Secure Payment</h2>
+
+<div class="card-ui">
+
+<p><strong>City:</strong> <span id="city"></span></p>
+<p><strong>Check-in:</strong> <span id="checkinPay"></span></p>
+<p><strong>Check-out:</strong> <span id="checkoutPay"></span></p>
+<p><strong>Guests:</strong> <span id="guestsPay"></span></p>
+<p><strong>Total Amount:</strong> ₹<span id="totalAmount"></span></p>
+
+<label>Cardholder Name</label>
+<input id="cardName">
+
+<label>Card Number</label>
+<input id="cardNumber">
+
+<div style="display:flex;gap:10px">
+
+<div style="flex:1">
+<label>Expiry</label>
+<input id="expiry" placeholder="MM/YY">
+</div>
+
+<div style="flex:1">
+<label>CVV</label>
+<input id="cvv">
+</div>
+
+</div>
+
+<button class="pay-btn" onclick="processPayment()">Pay Securely</button>
+
+</div>
+
+</section>
+<!-- SUCCESS -->
+
+<section class="section success" id="successSection">
+
+<h3>✔ Booking Confirmed</h3>
+<p>Your stay at Sunset Lagoon Resort is reserved.</p>
+
+<a href="hotel_ticket.html">
+<button class="pay-btn">View Booking Ticket</button>
+</a>
+
+</section>
+
+<script>
+
+function prepareBooking(){
+
+const name = document.getElementById("name").value;
+const email = document.getElementById("email").value;
+
+const checkin = document.getElementById("checkin").value;
+const checkout = document.getElementById("checkout").value;
+
+const roomSelect = document.getElementById("roomType");
+const pricePerNight = parseInt(roomSelect.value);
+const roomName = roomSelect.options[roomSelect.selectedIndex].text;
+
+if(!name || !email || !checkin || !checkout){
+alert("Please fill all booking details.");
+return;
+}
+
+const checkinDate = new Date(checkin);
+const checkoutDate = new Date(checkout);
+
+if(checkoutDate <= checkinDate){
+alert("Check-out must be after check-in.");
+return;
+}
+
+const nights = Math.ceil((checkoutDate - checkinDate)/(1000*60*60*24));
+
+const subtotal = nights * pricePerNight;
+const tax = subtotal * 0.12;
+const total = subtotal + tax;
+
+localStorage.setItem("hotelBookingData", JSON.stringify({
+
+city:"Bali",
+hotelName:"Sunset Lagoon Resort",
+
+roomName,
+pricePerNight,
+nights,
+subtotal,
+tax,
+total,
+
+checkin,
+checkout,
+guests:1
+
+}));
+
+document.getElementById("city").textContent="Bali";
+document.getElementById("checkinPay").textContent=checkin;
+document.getElementById("checkoutPay").textContent=checkout;
+document.getElementById("guestsPay").textContent="1";
+document.getElementById("totalAmount").textContent=total.toLocaleString();
+
+document.getElementById("paymentSection").style.display="block";
+
+document.getElementById("paymentSection").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+function processPayment(){
+
+const name=document.getElementById("cardName").value.trim();
+const number=document.getElementById("cardNumber").value.trim();
+const expiry=document.getElementById("expiry").value.trim();
+const cvv=document.getElementById("cvv").value.trim();
+
+if(!name||!number||!expiry||!cvv){
+alert("Please fill all payment details.");
+return;
+}
+
+if(number.length<12){
+alert("Invalid card number");
+return;
+}
+
+if(cvv.length!==3){
+alert("Invalid CVV");
+return;
+}
+
+document.getElementById("paymentSection").style.display="none";
+document.getElementById("successSection").style.display="block";
+
+}
+const expiry = document.getElementById("expiry");
+
+expiry.addEventListener("input", function(e){
+
+let value = e.target.value.replace(/\D/g,"").substring(0,4);
+
+if(value.length >= 3){
+value = value.substring(0,2) + "/" + value.substring(2);
+}
+
+e.target.value = value;
+
+});
+
+</script>
+
+</body>
+</html>

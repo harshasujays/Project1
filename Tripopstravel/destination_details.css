@@ -1,0 +1,608 @@
+/* ================= REVIEWS SECTION ================= */
+.reviews-section {
+    max-width: 1000px;
+    margin: 80px auto;
+    padding: 0 40px;
+}
+
+.reviews-section h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #1a1a1a;
+    text-align: center;
+}
+
+/* Review Form Styling */
+.review-form {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    margin-bottom: 50px;
+}
+
+.review-form textarea {
+    width: 100%;
+    height: 120px;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    font-size: 15px;
+    resize: none;
+    transition: border-color 0.3s;
+}
+
+.review-form textarea:focus {
+    outline: none;
+    border-color: #2f89a8;
+}
+
+.review-form button {
+    margin-top: 15px;
+    padding: 12px 30px;
+    background: #2f89a8; /* Theme Blue */
+    color: white;
+    border: none;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.review-form button:hover {
+    background: #256f86;
+    transform: translateY(-2px);
+}
+
+/* Individual Review Cards */
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.review-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    border: 1px solid #f0f0f0;
+    transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+    transform: scale(1.01);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.review-user {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #2f89a8; 
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(47, 137, 168, 0.2);
+    /* CRITICAL FIXES BELOW */
+    overflow: hidden; 
+    flex-shrink: 0; /* Prevents the circle from squishing */
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This crops the image to fill the circle without stretching */
+    display: block;
+}
+
+.review-user strong {
+    font-size: 17px;
+    color: #222;
+}
+
+/* Contact Link Styled as a Professional Button */
+.contact-link {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 13px;
+    color: #2f89a8;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s;
+}
+
+.contact-link:hover {
+    color: #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.review-date {
+    font-size: 13px;
+    color: #999;
+    font-weight: 500;
+}
+
+.review-body {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.delete-btn {
+    background: #fff0f0;
+    color: #e03131;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.delete-btn:hover {
+    background: #ffe3e3;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f5f7fa;
+  color: #222;
+}
+.hero-top {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    z-index: 20;
+}
+
+.hero-top .logo {
+    margin-left: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.hero-top .nav-menu {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.hero-top .nav-menu a {
+    color: #feffff;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.hero-top .nav-menu a.active {
+    text-decoration: underline;
+}
+
+/* ================= OVERVIEW SECTION ================= */
+.overview-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  padding: 60px 80px;
+  text-align: justify;
+
+}
+
+/* Badge */
+.badge {
+  display: inline-block;
+  background: #eef3ff;
+  color: #3b5bdb;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* About text */
+.overview-text-full h2 {
+  font-size: 38px;
+  margin-bottom: 20px;
+  text-align: justify;
+
+}
+
+.overview-desc {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #444;
+  text-align: justify;
+
+}
+
+/* ================= WIDGET ROW (THE FIX) ================= */
+.overview-widgets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 20px;
+  align-items: stretch;
+}
+
+/* ================= QUICK INFO & CURRENCY ================= */
+.quick-info-widget {
+  background: #ffffff;
+  padding: 25px 30px;
+  border-radius: 18px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  text-align: justify;
+
+}
+
+.quick-info-widget h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+  text-align: justify;
+
+}
+
+.info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  text-align: justify;
+
+}
+
+.info-card {
+  background: #e8e6e6;
+  padding: 18px 22px;
+  border-radius: 14px;
+  flex: 1 1 180px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease;
+  text-align: justify;
+
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+}
+
+.info-card strong {
+  display: block;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 6px;
+  text-align: justify;
+
+}
+
+.info-card span {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+  text-align: justify;
+
+}
+
+/* ================= WEATHER ================= */
+.weather-widget {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+}
+
+.weather-widget h3 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.weather-time {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+.weather-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.weather-card img {
+  width: 90px;
+  height: 90px;
+}
+
+.weather-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: justify;
+
+}
+
+.weather-details .temp {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: justify;
+
+}
+
+.weather-details span {
+  font-size: 14px;
+  color: #666;
+  text-align: justify;
+
+}
+
+/* ================= HERO ================= */
+.hero {
+  position: relative;
+  height: 70vh;
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-text {
+  position: absolute;
+  bottom: 40px;
+  left: 60px;
+  color: #fff;
+  z-index: 2;
+  text-align: justify;
+
+}
+
+.hero-text h1 {
+  font-size: 48px;
+  text-align: justify;
+
+}
+
+.hero-text p {
+  font-size: 18px;
+  opacity: 0.9;
+  text-align: justify;
+
+}
+
+/* ================= TABS ================= */
+.tabs {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  display: flex;
+  gap: 30px;
+  padding: 15px 60px;
+  border-bottom: 1px solid #ddd;
+  z-index: 10;
+  text-align: justify;
+
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #555;
+  position: relative;
+  text-align: justify;
+
+}
+
+.tabs button:hover {
+  color: #000;
+}
+
+.tabs button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #000;
+}
+
+/* ================= TAB CONTENT ================= */
+.tab-content {
+  display: none;
+  padding: 50px 60px;
+  text-align: justify;
+
+}
+
+.tab-content.active {
+  display: block;
+  text-align: justify;
+
+}
+
+/* ================= GRID CARDS ================= */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 25px;
+  text-align: justify;
+
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: transform .3s;
+  text-align: justify;
+
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card h3 {
+  margin: 15px;
+  font-size: 18px;
+  text-align: justify;
+
+}
+
+.card p,
+.card span,
+.card strong {
+  margin: 0 15px 15px;
+  font-size: 14px;
+  color: #666;
+}
+.hero-top .logo {
+    margin-left: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+}
+/* button.css */
+
+/* ================= GET STARTED BUTTON ================= */
+.get-started {
+    all: unset; /* removes all default button styles */
+    display: inline-block;
+    padding: 16px 40px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #2f89a8, #256f86);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(47, 137, 168, 0.35);
+    text-align: center;
+    text-decoration: none;
+}
+
+.get-started:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #256f86, #1f5e70);
+    box-shadow: 0 14px 30px rgba(31, 94, 112, 0.45);
+}
+
+/* Optional: center button in a section */
+.get-started-section {
+    display: flex;
+    flex-direction: column; /* stack buttons vertically */
+    align-items: center;    /* center horizontally */
+    gap: 20px;              /* space between buttons */
+    margin: 50px 0;         /* top & bottom spacing */
+}
+#currency {
+    padding: 40px 20px;
+    text-align: center;
+}
+.currency-card {
+    background: white;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.converter-box input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+.converter-row-inline {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+.select-wrapper { flex: 1; }
+.select-wrapper select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background: #f8f9fa;
+}
+.convert-btn-main {
+    background: #066294;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    width: 100%;
+}
+.result-display {
+    margin-top: 25px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #066294;
+}
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .overview-widgets {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-container {
+    padding: 40px 30px;
+  }
+
+  .hero-text {
+    left: 30px;
+  }
+
+  .tabs {
+    padding: 15px 30px;
+  }
+}

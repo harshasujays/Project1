@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shibuya Sky Haven</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0; padding:0; box-sizing:border-box;
+}
+body{
+    font-family:'Poppins',sans-serif;
+    background:#eef6f9;
+    color:#333;
+    line-height:1.6;
+}
+
+/* HERO */
+header{
+    height:90vh;
+    display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+    background: linear-gradient(rgba(238,246,249,0.5), rgba(238,246,249,0.5)), 
+                url('https://images.unsplash.com/photo-1602524811747-5b312dc03f95?crop=entropy&fit=crop&w=1470&q=80');
+    background-size:cover; background-position:center;
+}
+header h1{font-family:'Cinzel', serif; font-size:70px; color:#0077b6; margin-bottom:15px;}
+header p{font-size:22px; color:#555; margin-bottom:10px;}
+.stars{color:#ffbf00; font-size:22px;}
+.price{font-size:20px; color:#0077b6;}
+
+/* Sections */
+section{
+    padding:70px 10%;
+    position: relative;
+}
+
+/* Divider line after each section except last */
+section:not(:last-of-type)::after {
+    content: "";
+    display: block;
+    width: 80%;
+    height: 2px;
+    background: #0077b6;
+    margin: 50px auto 0 auto;
+    border-radius: 1px;
+    opacity: 0.3;
+}
+
+/* Titles */
+h2{text-align:center; font-size:38px; margin-bottom:40px; font-family:'Cinzel', serif; color:#0077b6;}
+
+/* Gallery */
+.gallery{display:flex; flex-wrap:wrap; gap:20px; justify-content:center;}
+.gallery img{width:300px; height:200px; object-fit:cover; border-radius:12px; transition:0.3s;}
+.gallery img:hover{transform:scale(1.05);}
+
+/* Rooms */
+.rooms{display:flex; flex-wrap:wrap; gap:25px; justify-content:center;}
+.room-card{background:#dff6fb; border-radius:15px; overflow:hidden; width:300px; box-shadow:0 5px 15px rgba(0,119,182,0.2); transition:0.3s;}
+.room-card:hover{transform:translateY(-8px);}
+.room-card img{width:100%; height:200px; object-fit:cover;}
+.room-card div{padding:20px;}
+.room-card h3{color:#0077b6; margin-bottom:10px;}
+.room-card p{font-size:14px; color:#333;}
+
+/* Features */
+.features{display:flex; flex-wrap:wrap; gap:20px; justify-content:center; text-align:center;}
+.feature-box{background:#dff6fb; padding:20px; border-radius:15px; width:220px; box-shadow:0 5px 15px rgba(0,119,182,0.2);}
+.feature-box img{width:50px; margin-bottom:10px;}
+
+/* Menu */
+.menu{display:flex; flex-wrap:wrap; gap:20px; justify-content:center;}
+.menu-card{background:#dff6fb; border-radius:15px; overflow:hidden; width:220px; box-shadow:0 5px 15px rgba(0,119,182,0.2);}
+.menu-card img{width:100%; height:160px; object-fit:cover;}
+.menu-card div{padding:10px;}
+
+/* Booking */
+.booking{max-width:500px; margin:0 auto; padding:30px; border-radius:15px; background:#b3e5fc; text-align:center; box-shadow:0 5px 20px rgba(0,119,182,0.2);}
+.booking input{width:100%; padding:12px; margin:10px 0; border-radius:10px; border:1px solid #0077b6;}
+.booking input:focus{outline:none; box-shadow:0 0 8px #0077b6;}
+.booking button{margin-top:12px; padding:12px 25px; background:#0077b6; border:none; color:white; font-size:16px; border-radius:10px; cursor:pointer; transition:0.3s;}
+.booking button:hover{background:#005f87; transform:scale(1.05);}
+
+/* Footer */
+footer{text-align:center; padding:20px; background:#cce7f3; color:#333; margin-top:50px; font-weight:600;}
+
+/* Responsive */
+@media(max-width:768px){
+    header h1{font-size:50px;}
+    header p{font-size:16px;}
+    .rooms, .gallery, .features, .menu{flex-direction:column; align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Shibuya Sky Haven</h1>
+    <p>Stay Elevated Above the Heart of Shibuya</p>
+    <div class="stars">★★★★★</div>
+    <div class="price">₹8,900 per night</div>
+</header>
+
+<section>
+<h2>Gallery</h2>
+<div class="gallery">
+<img src="hotel 5.1.jpg" alt="Rooftop">
+<img src="hotel 5.2.jpeg" alt="Lounge">
+<img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?crop=entropy&fit=crop&w=800&q=80" alt="Lobby">
+<img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?crop=entropy&fit=crop&w=800&q=80" alt="Room">
+</div>
+</section>
+
+<section>
+<h2>Rooms</h2>
+<div class="rooms">
+<div class="room-card">
+<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?crop=entropy&fit=crop&w=800&q=80" alt="Sky Suite">
+<div>
+<h3>Sky Suite</h3>
+<p>Panoramic city views with a modern, cozy design.</p>
+</div>
+</div>
+
+<div class="room-card">
+<img src="hotel 5.3.jpg" alt="Urban Zen">
+<div>
+<h3>Urban Zen</h3>
+<p>Minimalist Japanese-inspired room with calming colors.</p>
+</div>
+</div>
+
+<div class="room-card">
+<img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?crop=entropy&fit=crop&w=800&q=80" alt="Family Panorama">
+<div>
+<h3>Family Panorama</h3>
+<p>Spacious room with large windows and playful accents.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Features</h2>
+<div class="features">
+<div class="feature-box">
+<img src="hotel 5.4.webp" alt="Rooftop Bar">
+<h4>Rooftop Bar</h4>
+</div>
+<div class="feature-box">
+<img src="hotel 5.5.webp" alt="Sky Gym">
+<h4>Sky Gym</h4>
+</div>
+<div class="feature-box">
+<img src="hotel 5.6.jpg" alt="Organic Café">
+<h4>Organic Café</h4>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Dining</h2>
+<div class="menu">
+<div class="menu-card">
+<img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&fit=crop&w=800&q=80" alt="Sunrise Breakfast">
+<div><h4>Sunrise Breakfast</h4></div>
+</div>
+<div class="menu-card">
+<img src="hotel 5.7.webp" alt="City Fusion Lunch">
+<div><h4>City Fusion Lunch</h4></div>
+</div>
+<div class="menu-card">
+<img src="hotel 5.8.webp" alt="Skyline Desserts">
+<div><h4>Skyline Desserts</h4></div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Book Your Stay</h2>
+<div class="booking">
+<input type="text" placeholder="Full Name" id="name" required>
+<input type="email" placeholder="Email" id="email" required>
+<input type="date" id="date" required>
+<input type="number" placeholder="Guests" id="guests" min="1" required>
+<button onclick="goToPayment()">Book Now</button>
+</div>
+</section>
+<section id="paymentSection" style="display:none;">
+<h2>Secure Payment</h2>
+
+<div class="booking">
+
+<div class="summary">
+<p><strong>City:</strong> <span id="city"></span></p>
+<p><strong>Date:</strong> <span id="checkin"></span></p>
+<p><strong>Guests:</strong> <span id="guestCount"></span></p>
+<p><strong>Total Amount:</strong> ₹<span id="totalAmount"></span></p>
+</div>
+
+<input id="cardName" type="text" placeholder="Cardholder Name">
+<input id="cardNumber" type="text" placeholder="Card Number" maxlength="19">
+
+<div style="display:flex;gap:10px;">
+<input id="expiry" type="text" placeholder="MM/YY" maxlength="5">
+<input id="cvv" type="text" placeholder="CVV" maxlength="3">
+</div>
+
+<button onclick="processPayment()">Pay Securely</button>
+
+</div>
+</section>
+<section id="successSection" style="display:none;">
+<h2>Booking Status</h2>
+
+<div class="booking" style="text-align:center">
+
+<h3 style="color:#0077b6;font-size:28px;margin-bottom:10px;">
+✔ Booking Confirmed
+</h3>
+
+<p style="margin-bottom:25px;">
+Your stay at Shibuya Sky Haven is confirmed.
+</p>
+
+<a href="hotel_ticket.html"
+style="
+display:inline-block;
+padding:12px 30px;
+background:#0077b6;
+color:white;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;">
+View Booking Ticket
+</a>
+
+</div>
+</section>
+<footer>
+© 2026 Shibuya Sky Haven | Tokyo, Japan
+</footer>
+
+<script>
+
+function goToPayment(){
+
+const name = document.getElementById("name").value.trim();
+const email = document.getElementById("email").value.trim();
+const date = document.getElementById("date").value;
+const guests = document.getElementById("guests").value;
+
+if(!name || !email || !date || !guests){
+alert("Please fill all booking details.");
+return;
+}
+
+const pricePerNight = 8900;
+const total = pricePerNight;
+
+const bookingData = {
+city: "Tokyo",
+hotelName: "Shibuya Sky Haven",
+checkin: date,
+checkout: date,
+guests: guests,
+totalAmount: total
+};
+
+localStorage.setItem("hotelBookingData", JSON.stringify(bookingData));
+
+document.getElementById("city").textContent = bookingData.city;
+document.getElementById("checkin").textContent = bookingData.checkin;
+document.getElementById("guestCount").textContent = bookingData.guests;
+document.getElementById("totalAmount").textContent = bookingData.totalAmount;
+
+document.getElementById("paymentSection").style.display="block";
+
+document.getElementById("paymentSection").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+function processPayment(){
+
+const name = document.getElementById("cardName").value.trim();
+const number = document.getElementById("cardNumber").value.trim();
+const expiry = document.getElementById("expiry").value.trim();
+const cvv = document.getElementById("cvv").value.trim();
+
+if(!name || !number || !expiry || !cvv){
+alert("Please fill all payment details.");
+return;
+}
+
+if(number.length < 12){
+alert("Enter a valid card number.");
+return;
+}
+
+if(cvv.length !== 3){
+alert("Enter a valid CVV.");
+return;
+}
+
+document.getElementById("paymentSection").style.display="none";
+document.getElementById("successSection").style.display="block";
+
+document.getElementById("successSection").scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+const expiryInput = document.getElementById("expiry");
+
+expiryInput.addEventListener("input", function(e){
+
+let value = e.target.value.replace(/\D/g,"");
+
+value = value.substring(0,4);
+
+if(value.length >= 3){
+value = value.substring(0,2) + "/" + value.substring(2);
+}
+
+e.target.value = value;
+
+});
+
+</script>
+
+
+</body>
+</html>

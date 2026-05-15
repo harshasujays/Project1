@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hotel Lumière Paris | Luxury Brochure & Booking</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body{margin:0;font-family:Poppins,sans-serif;background:#0f172a;color:#e5e7eb;scroll-behavior:smooth}
+
+    .hero{
+      height:100vh;
+      background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.85)),
+      url('hotel 1.1.jpeg') center/cover no-repeat;
+      display:flex;align-items:center;justify-content:center;text-align:center;padding:0 10%
+    }
+    .hero-content{max-width:900px}
+    .hero h1{font-size:64px;margin-bottom:20px}
+    .hero p{font-size:20px;line-height:1.8;margin-bottom:30px}
+    .hero a{display:inline-block;padding:16px 40px;background:#c9a24d;color:black;border-radius:40px;text-decoration:none;font-weight:700}
+
+    nav{display:flex;justify-content:center;gap:30px;background:#020617;padding:16px;position:sticky;top:0;z-index:99}
+    nav a{color:#c9a24d;text-decoration:none;font-weight:600}
+
+    section{padding:80px 10%}
+    h2{color:#c9a24d;font-size:38px;margin-bottom:30px;text-align:center}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px}
+    .card{background:#020617;padding:25px;border-radius:25px;text-align:center;transition:.4s}
+    .card:hover{transform:translateY(-8px)}
+
+    .highlight-box{background:#1e293b;padding:20px;border-radius:20px;text-align:center}
+
+    .gallery img,.room-img,.food-card img{
+      width:100%;height:200px;object-fit:cover;border-radius:15px;margin-bottom:15px;transition:.4s
+    }
+    .gallery img:hover,.room-img:hover,.food-card img:hover{transform:scale(1.05)}
+
+    .price{color:#c9a24d;font-weight:600}
+
+    .booking{background:linear-gradient(135deg,#020617,#1e293b);padding:40px;border-radius:30px;max-width:650px;margin:auto}
+    .booking input,.booking select{width:100%;padding:12px;margin:10px 0 20px;border-radius:12px;border:none}
+    .booking button{width:100%;padding:14px;background:#c9a24d;border:none;border-radius:40px;font-weight:700;cursor:pointer}
+  
+
+    footer{text-align:center;padding:30px;color:#94a3b8;background:#020617}
+
+    @media(max-width:768px){.hero h1{font-size:40px}}
+  </style>
+</head>
+<body>
+
+<div class="hero" id="home">
+  <div class="hero-content">
+    <h1>Hotel Lumière Paris ★★★★★</h1>
+    <p>
+      Located just 500 meters from the Eiffel Tower, Hotel Lumière Paris offers unmatched elegance,
+      breathtaking skyline views, world-class hospitality, and refined luxury in the heart of Paris.
+    </p>
+    <a href="#about">Explore Luxury</a>
+  </div>
+</div>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#highlights">Highlights</a>
+  <a href="#rooms">Rooms</a>
+  <a href="#restaurant">Dining</a>
+  <a href="#testimonials">Reviews</a>
+  <a href="#booking">Book</a>
+</nav>
+
+<section id="about">
+  <h2>Prime Location in Paris</h2>
+  <p style="max-width:900px;margin:auto;text-align:center;line-height:1.9;font-size:18px">
+    Situated near the iconic Eiffel Tower, our hotel provides easy access to major attractions such as
+    the Louvre Museum (2.5 km), Champs-Élysées (1.8 km), and the Seine River promenade.
+    Surrounded by charming cafés and luxury boutiques, Hotel Lumière ensures convenience and sophistication
+    for both leisure and business travelers.
+  </p>
+</section>
+
+<section id="highlights">
+  <h2>Hotel Highlights</h2>
+  <div class="grid">
+    <div class="highlight-box">⭐ 5-Star Luxury Experience</div>
+    <div class="highlight-box">📍 500m from Eiffel Tower</div>
+    <div class="highlight-box">🏊 Rooftop Infinity Pool</div>
+    <div class="highlight-box">🧖 Spa & Wellness Center</div>
+    <div class="highlight-box">🍽️ Fine Dining Restaurant</div>
+    <div class="highlight-box">🚖 24/7 Airport Transfer</div>
+  </div>
+</section>
+
+<section id="hotel-gallery">
+<h2>Hotel Gallery</h2>
+<div class="grid gallery">
+<img src="hotel 1.2.jpg" alt="Hotel room">
+<img src="hotel 1.4.webp" alt="roof top">
+<img src="hotel 1.3.jpg" alt="Hotel Pool Area">
+<img src="hotel 1.5.jpg" alt="Hotel fitness">
+</div>
+</section>
+
+<section id="rooms">
+  <h2>Luxury Accommodations</h2>
+  <div class="grid">
+    <div class="card">
+      <img class="room-img" src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=1200&auto=format&fit=crop">
+      <h3>Deluxe Room</h3>
+      <p>Elegant interiors with king-size bed, marble bathroom, and city view.</p>
+      <p class="price">₹8,000 / night</p>
+    </div>
+    <div class="card">
+      <img class="room-img" src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=1200&auto=format&fit=crop">
+      <h3>Executive Suite</h3>
+      <p>Spacious suite with balcony, minibar, and premium amenities.</p>
+      <p class="price">₹15,000 / night</p>
+    </div>
+    <div class="card">
+      <img class="room-img" src="https://images.unsplash.com/photo-1591088398332-8a7791972843?q=80&w=1200&auto=format&fit=crop">
+      <h3>Presidential Suite</h3>
+      <p>Panoramic Paris views, private dining area, and luxury concierge service.</p>
+      <p class="price">₹30,000 / night</p>
+    </div>
+  </div>
+</section>
+
+<section id="restaurant">
+  <h2>Fine Dining Experience</h2>
+  <div class="grid">
+    <div class="card food-card">
+      <img src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=1200&auto=format&fit=crop">
+      <h3>French Onion Soup</h3>
+      <p class="price">₹450</p>
+    </div>
+    <div class="card food-card">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop">
+      <h3>Grilled Salmon</h3>
+      <p class="price">₹1,200</p>
+    </div>
+    <div class="card food-card">
+      <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=1200&auto=format&fit=crop">
+      <h3>Chocolate Lava Cake</h3>
+      <p class="price">₹500</p>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <h2>Guest Testimonials</h2>
+  <div class="grid">
+    <div class="card">★★★★★<p>"The Eiffel Tower view from our suite was breathtaking!"</p><strong>- Emily R., UK</strong></div>
+    <div class="card">★★★★★<p>"Exceptional service and luxurious comfort."</p><strong>- Daniel M., USA</strong></div>
+    <div class="card">★★★★★<p>"Perfect location and unforgettable experience."</p><strong>- Sofia L., Italy</strong></div>
+  </div>
+</section>
+
+<section id="booking">
+  <h2>Reserve Your Stay</h2>
+  <div class="booking">
+    <label>Check-in</label>
+    <input type="date" required>
+    <label>Check-out</label>
+    <input type="date" required>
+    <label>Guests</label>
+    <select required>
+      <option>1 Guest</option>
+      <option>2 Guests</option>
+      <option>3 Guests</option>
+      <option>4 Guests</option>
+    </select>
+    
+    <button onclick="goToPayment()">Confirm Booking</button>
+  </div>
+</section>
+<section id="paymentSection" style="display:none;">
+  <h2>Secure Payment</h2>
+
+  <div class="booking">
+
+    <div class="summary">
+      <p><strong>City:</strong> <span id="city"></span></p>
+      <p><strong>Check-in:</strong> <span id="checkin"></span></p>
+      <p><strong>Check-out:</strong> <span id="checkout"></span></p>
+      <p><strong>Guests:</strong> <span id="guests"></span></p>
+      <p><strong>Total Amount:</strong> ₹<span id="totalAmount"></span></p>
+    </div>
+
+    <input id="cardName" type="text" placeholder="Cardholder Name">
+    <input id="cardNumber" type="text" placeholder="Card Number" maxlength="19">
+
+    <div style="display:flex;gap:10px;">
+      <input id="expiry" type="text" placeholder="MM/YY" maxlength="5">
+      <input id="cvv" type="text" placeholder="CVV" maxlength="3">
+    </div>
+
+    <button onclick="processPayment()">Pay Securely</button>
+
+  </div>
+</section>
+<section id="successSection" style="display:none;">
+  <h2>Booking Status</h2>
+
+  <div class="booking" style="text-align:center">
+
+    <h3 style="color:#c9a24d;font-size:28px;margin-bottom:10px;">
+      ✔ Booking Confirmed
+    </h3>
+
+    <p style="margin-bottom:25px;">
+      Your luxury stay has been successfully reserved.
+    </p>
+
+    <a href="hotel_ticket.html"
+       style="
+        display:inline-block;
+        padding:12px 30px;
+        background:#c9a24d;
+        color:black;
+        border-radius:30px;
+        text-decoration:none;
+        font-weight:600;">
+      View Booking Ticket
+    </a>
+
+  </div>
+
+</section>
+
+<footer>
+  📍 12 Avenue de Paris, France | ☎ +33 123 456 789 | ✉ info@hotellumiereparis.com
+</footer>
+<script>
+function goToPayment() {
+
+  const checkin = document.querySelectorAll("input[type='date']")[0].value;
+  const checkout = document.querySelectorAll("input[type='date']")[1].value;
+  const guests = document.querySelector("select").value;
+
+  if (!checkin || !checkout || !guests) {
+    alert("Please fill all booking details before continuing.");
+    return;
+  }
+
+  const checkinDate = new Date(checkin);
+  const checkoutDate = new Date(checkout);
+
+  if (checkoutDate <= checkinDate) {
+    alert("Check-out date must be after the check-in date.");
+    return;
+  }
+
+  const nights = (checkoutDate - checkinDate) / (1000 * 60 * 60 * 24);
+  const pricePerNight = 8000;
+  const total = nights * pricePerNight;
+
+  const bookingData = {
+  city: "Paris",
+  hotelName: "Hotel Lumière Paris",
+  checkin: checkin,
+  checkout: checkout,
+  guests: guests,
+  totalAmount: total
+};
+
+localStorage.setItem("hotelBookingData", JSON.stringify(bookingData));
+
+document.getElementById("city").textContent = bookingData.city;
+document.getElementById("checkin").textContent = bookingData.checkin;
+document.getElementById("checkout").textContent = bookingData.checkout;
+document.getElementById("guests").textContent = bookingData.guests;
+document.getElementById("totalAmount").textContent = bookingData.totalAmount;
+  document.getElementById("paymentSection").style.display = "block";
+
+  document.getElementById("paymentSection").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+function processPayment() {
+
+  const name = document.getElementById("cardName").value.trim();
+  const number = document.getElementById("cardNumber").value.trim();
+  const expiry = document.getElementById("expiry").value.trim();
+  const cvv = document.getElementById("cvv").value.trim();
+
+  if (!name || !number || !expiry || !cvv) {
+    alert("Please fill all payment details.");
+    return;
+  }
+
+  if (number.length < 12) {
+    alert("Enter a valid card number.");
+    return;
+  }
+
+  if (cvv.length !== 3) {
+    alert("Enter a valid CVV.");
+    return;
+  }
+
+  document.getElementById("paymentSection").style.display = "none";
+  document.getElementById("successSection").style.display = "block";
+
+  document.getElementById("successSection").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+const expiryInput = document.getElementById("expiry");
+
+expiryInput.addEventListener("input", function(e) {
+
+  let value = e.target.value.replace(/\D/g, ""); // keep numbers only
+
+  // limit to 4 digits
+  value = value.substring(0,4);
+
+  // add slash after month
+  if(value.length >= 3){
+    value = value.substring(0,2) + "/" + value.substring(2);
+  }
+
+  e.target.value = value;
+
+});
+
+</script>
+
+</body>
+</html>

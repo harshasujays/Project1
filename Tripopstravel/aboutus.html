@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About TripOps | The Unified Travel Engine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #0a182e;
+            --blue: #007bff;
+            --pink: #d63384;
+            --light-bg: #f8f9fa;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background-color: #ffffff;
+            color: var(--navy);
+            line-height: 1.6;
+        }
+
+        /* --- REFINED EXECUTIVE TOP BAR --- */
+        .top-nav {
+            background-color: var(--navy);
+            color: white;
+            padding: 8px 10%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 25px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- CLEAN HEADER (NO DROPDOWNS) --- */
+        header {
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { font-size: 30px; font-weight: 800; letter-spacing: -1.5px; cursor: pointer; }
+        .logo span { color: var(--blue); }
+
+        nav ul { display: flex; list-style: none; gap: 40px; margin: 0; padding: 0; }
+        nav ul li { font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #555; cursor: pointer; transition: 0.3s; }
+        nav ul li:hover { color: var(--blue); }
+
+        .btn-launch {
+            background: var(--blue);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+            transition: 0.4s;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+        }
+
+        /* --- HERO SECTION WITH MASKED "T" --- */
+        .hero {
+            display: flex;
+            padding: 100px 10%;
+            align-items: center;
+            gap: 60px;
+            background: linear-gradient(to bottom, #ffffff, var(--light-bg));
+        }
+
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: 85px; margin: 0; line-height: 0.9; font-weight: 900; }
+        .hero-text h1::after { content: '.'; color: var(--pink); }
+        .hero-text p { font-size: 22px; color: #444; margin: 35px 0; font-weight: 400; line-height: 1.4; }
+
+        .hero-visual {
+            flex: 1.2;
+            position: relative;
+            height: 600px;
+        }
+
+        .shape-t {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            /* Custom professional T-shape mask with rounded corners */
+            clip-path: polygon(10% 0%, 90% 0%, 100% 10%, 100% 30%, 65% 30%, 65% 100%, 35% 100%, 35% 30%, 0% 30%, 0% 10%);
+            z-index: 2;
+            transition: transform 0.5s ease-out;
+        }
+
+        .blob-decoration {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 123, 255, 0.05);
+            border-radius: 50%;
+            top: -50px;
+            right: -50px;
+            z-index: 1;
+        }
+
+        /* --- CONTENT RICH SECTIONS (FROM PPT DATA) --- */
+        .content-grid {
+            padding: 100px 10%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 80px;
+        }
+
+        .content-block h2 { font-size: 42px; margin-bottom: 20px; position: relative; }
+        .content-block h2::before { content: ''; position: absolute; bottom: -10px; left: 0; width: 50px; height: 5px; background: var(--pink); }
+        
+        .content-block p { font-size: 18px; color: #555; margin-bottom: 30px; }
+
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li { margin-bottom: 20px; display: flex; align-items: flex-start; gap: 15px; }
+        .feature-list i { color: var(--blue); margin-top: 5px; }
+        .feature-list b { color: var(--navy); display: block; font-size: 18px; }
+
+        footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.6);
+            padding: 60px 10%;
+            text-align: center;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="top-nav">
+        <span><i class="fa fa-envelope"></i>@tripops.com</span>
+        <span><i class="fa fa-code-branch"></i> v1.0.4</span>
+    </div>
+
+    <header>
+        <div class="logo" onclick="window.location.href='index.php'">T<span>ripOps</span></div>
+       
+        <a href="destination.php" class="btn-launch">Initiate Planning</a>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>About us</h1>
+                <p>Unifying fragmented travel utilities into a single, high-performance operational engine</p>
+                <div style="display:flex; gap: 20px;">
+                    <div style="border-left: 3px solid var(--blue); padding-left: 20px;">
+                        <span style="display:block; font-weight:800; font-size: 24px;">Everything in one</span>
+                        <span style="color:#777; font-size: 14px; text-transform: uppercase;">Easy, Time saving</span>
+                    </div>
+                    <div style="border-left: 3px solid var(--pink); padding-left: 20px;">
+                        <span style="display:block; font-weight:800; font-size: 24px;">Customized Plans</span>
+                        <span style="color:#777; font-size: 14px; text-transform: uppercase;">Users's Favourite</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="blob-decoration"></div>
+                <div class="shape-t" id="heroImage"></div>
+            </div>
+        </section>
+
+        <section class="content-grid">
+            <div class="content-block">
+                <h2>The Mission</h2>
+                <p>Travelers struggle with tasks spread across dozens of platforms—from packing lists to expense tracking. TripOps was engineered to bridge this gap, merging independent features into one dashboard</p>
+                
+                <ul class="feature-list">
+                    <li>
+                        <i class="fa fa-check-circle"></i>
+                        <span><b>VoyageOps Engine</b>Integrated flight, train, bus, and cab booking through a tabbed operational interface.</span>
+                    </li>
+                    <li>
+                        <i class="fa fa-check-circle"></i>
+                        <span><b>StayOps Directory</b>Curated hotel discovery with real-time pricing and visual service exploration.</span>
+                    </li>
+                    <li>
+                        <i class="fa fa-check-circle"></i>
+                        <span><b>Trip Planning</b>Our Itinerary Engine provides a high-performance workspace for organizing your journey.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <h2>Our Purpose</h2>
+                <p>We believe travel planning should be collaborative and mathematically sound. Our system manages the logic so you can focus on the journey.</p>
+                
+                <ul class="feature-list">
+                    <li>
+                        <i class="fa fa-shield-alt"></i>
+                        <span><b>Operational Security</b>Simulated payment validation and secure ticket generation via unique QR code verification.</span>
+                    </li>
+                    <li>
+                        <i class="fa fa-users"></i>
+                        <span><b>Group Collaboration</b>Sync your entire group via unique invite codes to coordinate bookings and budgets in real-time.</span>
+                    </li>
+                    <li>
+                        <i class="fa fa-users"></i>
+                        <span><b>Destination Overview</b>The Destination Overview feature provides travelers with a comprehensive snapshot of their chosen location.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>TripOps.</p>
+    </footer>
+
+    <script>
+        // Subtle Parallax effect for the "T" shape
+        const heroImage = document.getElementById('heroImage');
+        document.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.pageX) / 45;
+            const y = (window.innerHeight / 2 - e.pageY) / 45;
+            heroImage.style.transform = `translate(${x}px, ${y}px) rotate(${x/15}deg)`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>TripOps Digital Ticket</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#f4f6fb;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.ticket{
+  background:white;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  width:420px;
+}
+
+h2{margin-bottom:15px;}
+p{margin:6px 0;}
+hr{margin:15px 0;}
+</style>
+</head>
+
+<body>
+
+<div class="ticket" id="ticketBox">
+Loading ticket...
+</div>
+
+<script>
+const data = JSON.parse(localStorage.getItem("tripops_ticket"));
+
+if(!data){
+  document.getElementById("ticketBox").innerHTML = "❌ Ticket not found";
+}else{
+  const passengers = data.passengers
+    .map((p,i)=>`P${i+1}: ${p.name} (${p.age}, ${p.gender})`)
+    .join("<br>");
+
+  document.getElementById("ticketBox").innerHTML = `
+    <h2>${data.mode.toUpperCase()} TICKET</h2>
+
+    <p><b>Flight:</b> ${data.tripName}</p>
+    <p><b>Flight No:</b> ${data.flightNumber}</p>
+
+    <hr>
+
+    <p><b>Route:</b> ${data.from} → ${data.to}</p>
+    <p><b>Date:</b> ${data.date}</p>
+    <p><b>Class:</b> ${data.type}</p>
+
+    <hr>
+
+    <p><b>Passengers:</b><br>${passengers}</p>
+
+    <hr>
+
+    <p><b>Booking ID:</b> #${data.bookingId}</p>
+  `;
+}
+</script>
+
+</body>
+</html>
